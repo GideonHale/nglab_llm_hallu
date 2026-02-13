@@ -1,7 +1,6 @@
-import agent
+import agent_gemini as agent
 from dotenv import load_dotenv
 import os
-# import google.generativeai as genai
 from google import genai
 
 load_dotenv()  # Loads .env
@@ -9,6 +8,8 @@ api_key = os.getenv('GEMINI_API_KEY')
 # client = genai.Client(api_key=api_key)
 
 if __name__=='__main__':
+    # something isn't working with the api key
+    
     client = genai.Client(
         api_key=api_key
     )
