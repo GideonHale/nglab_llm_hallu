@@ -13,7 +13,7 @@ class Message:
 class Agent:
     name: str
     system_prompt: str
-    model: str = "gpt-oss-120b"
+    model: str = "gpt-oss:120b"
     temperature: float = 0.2
     client: Any = field(default_factory=OpenAI)
 
