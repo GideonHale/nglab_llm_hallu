@@ -1,59 +1,47 @@
-import agent_gpt as agent
+import agent_gpt as ag
 from openai import OpenAI
 
-if __name__=='__main__':
+def orderly_mad(topic: str, agents: List[ag.Agent], max_rounds: int) -> List[ag.Message]:
+    # Initialize transcript with the debate topic
+    transcript = [ag.Message(role="user", content=f"Topic: {topic}", author="Moderator")]
+    
+    for i in range(max_rounds):
+        # Determine whose turn it is using modulo for scalability (works for 2+ agents)
+        current_agent = agents[i % len(agents)]
+        
+        print(f"[*] {current_agent.name} is thinking...")
+        response = current_agent.respond(transcript)
+        
+        transcript.append(response)
+        
+        # Immediate feedback in terminal
+        print(f"[{current_agent.name}]: {response.content}\n")
+        
+    return transcript
 
-    local_client = OpenAI(
-        base_url="http://localhost:11434/v1",  # Ollama's OpenAI-compatible API
-        api_key="ollama"  # Dummy value; Ollama ignores it
-    )
+def main():
+    client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
-    a = agent.Agent(
+    # Define our debaters
+    joseph = ag.Agent(
         name="Joseph",
-        system_prompt=
-            """
-                You are a parent of teenagers. Take a liberal stance.
-            """,
-        client=local_client,
+        system_prompt="You are a progressive parent. Argue for modern, tech-forward child-rearing.",
+        client=client
     )
-    b = agent.Agent(
+    
+    steven = ag.Agent(
         name="Steven",
-        system_prompt=
-            """
-                You are a parent of small kids. Take a conservative stance.
-            """,
-        client=local_client,
+        system_prompt="You are a traditional parent. Argue for restricted tech use and old-school discipline.",
+        client=client
     )
-    
-    start_m = agent.Message(
-        role='user',
-        content="At what age should children be receiving cellphones?")
-    
-    second_m = agent.Message(
-        role='user',
-        content="When should children get training on knife ettiquette?")
-    
-    transcript = [start_m, second_m]
 
-    # this next bit is going to be transplanted into the function orderly_mad() above as soon as
-    # I can get the models to respond to each other
-    curr_agent = a
-    curr_opponent = b
-    maxiter = 4
-    for i in range(maxiter):
-        
-        n_message = agent.Message(
-            role = 'assistant',
-            content = curr_agent.name + ': ' + curr_agent.respond(transcript).content # get response
-        )
-        transcript.append(n_message) # add to transcript
-        
-        curr_agent, curr_opponent = curr_opponent, curr_agent # swap
+    print("--- Multi-Agent Debate System ---")
+    topic = input("Enter the debate topic: ")
+    rounds = int(input("Enter number of turns: "))
+
+    final_transcript = orderly_mad(topic, [joseph, steven], rounds)
     
-    # use this as soon as it's implemented
-    # transcript = orderly_mad(start_m, [a, b], maxiter)
-    
-    for message in transcript:
-        # print(f"{message.role}: {message.content}")
-        print(message.content)
-    
+    print("--- Debate Concluded ---")
+
+if __name__ == "__main__":
+    main()
