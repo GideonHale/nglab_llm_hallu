@@ -1,4 +1,5 @@
 import agent_gpt as ag
+from typing import List
 from openai import OpenAI
 
 def orderly_mad(topic: str, agents: List[ag.Agent], max_rounds: int) -> List[ag.Message]:

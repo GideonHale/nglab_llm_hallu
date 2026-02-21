@@ -8,6 +8,7 @@ Role = Literal["system", "user", "assistant"]
 class Message:
     role: Role
     content: str
+    author: str = 'Undefined'
 
 @dataclass
 class Agent:
