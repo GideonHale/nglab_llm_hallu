@@ -20,19 +20,35 @@ def orderly_mad(topic: str, agents: List[ag.Agent], max_rounds: int) -> List[ag.
         
     return transcript
 
-def main():
+role_titles = ['parents', 'mathematician', 'public administrator']
+roles = {
+    "parents": [
+        "You are a parent who advocates for progressive educational reforms and inclusive community policies.",
+        "You are a parent who values traditional curriculum and emphasizes individual accountability and family-centered values."
+    ],
+    "mathematician": [
+        "You are a mathematician who believes in using quantitative models to drive social progress and equitable resource distribution.",
+        "You are a mathematician who prioritizes pure logic and the objective application of mathematical principles, wary of social engineering."
+    ],
+    "public administrator": [
+        "You are a public administrator who supports robust government intervention and centralized social programs.",
+        "You are a public administrator who advocates for limited government, fiscal conservatism, and decentralized local governance."
+    ],
+}
+
+def main(role):
     client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
     # Define our debaters
     joseph = ag.Agent(
         name="Joseph",
-        system_prompt="You are a progressive parent. Argue for modern, tech-forward child-rearing.",
+        system_prompt=roles[role][0],
         client=client
     )
     
     steven = ag.Agent(
         name="Steven",
-        system_prompt="You are a traditional parent. Argue for restricted tech use and old-school discipline.",
+        system_prompt=roles[role][1],
         client=client
     )
 
@@ -45,4 +61,10 @@ def main():
     print("--- Debate Concluded ---")
 
 if __name__ == "__main__":
-    main()
+    print('Role options: ', ', '.join(role_titles))
+    while True:
+        role = input("Enter the role: ")
+        if role in role_titles:
+            break
+        print("Invalid role. Please try again.")
+    main(role)
