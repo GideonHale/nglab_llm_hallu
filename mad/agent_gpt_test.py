@@ -64,8 +64,7 @@ def main(role):
         system_prompt="You are a neutral observer. Summarize the debate by analyzing each delineated response and identifying the core arguments.",
         client=client
     )
-    delineated_transcript = "\n\n--- NEXT RESPONSE ---\n\n".join(final_transcript)
-    summary = summarizer.chat(f"Please briefly summarize the key points of the following debate responses:\n{delineated_transcript}")
+    summary = summarizer.chat(f"Please briefly summarize the key points of the following debate responses:\n{final_transcript}")
     print("\n--- Summary ---\n", summary)
     
     print("--- Debate Concluded ---")
