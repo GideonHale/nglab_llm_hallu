@@ -58,16 +58,18 @@ def main(role):
 
     final_transcript = orderly_mad(topic, [joseph, steven], rounds)
 
+    print("--- Debate Concluded ---")
+    
     # Summarize the debate
     summarizer = ag.Agent(
         name="Summarizer",
         system_prompt="You are a neutral observer. Summarize the debate by analyzing each delineated response and identifying the core arguments.",
         client=client
     )
-    summary = summarizer.chat(f"Please briefly summarize the key points of the following debate responses:\n{final_transcript}")
-    print("\n--- Summary ---\n", summary)
+    summary = summarizer.respond(final_transcript)
+
+    print("\n--- Summary ---\n", summary.content)
     
-    print("--- Debate Concluded ---")
 
 if __name__ == "__main__":
     print('Role options: ', ', '.join(role_titles))
