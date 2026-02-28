@@ -20,9 +20,9 @@ def orderly_mad(topic: str, agents: List[ag.Agent], max_rounds: int) -> List[ag.
         
     return transcript
 
-role_titles = ['parents', 'mathematician', 'public administrator']
+role_titles = ['parent', 'mathematician', 'public administrator']
 roles = {
-    "parents": [
+    "parent": [
         "You are a parent who advocates for progressive educational reforms and inclusive community policies.",
         "You are a parent who values traditional curriculum and emphasizes individual accountability and family-centered values."
     ],
@@ -57,6 +57,16 @@ def main(role):
     rounds = int(input("Enter number of turns: "))
 
     final_transcript = orderly_mad(topic, [joseph, steven], rounds)
+
+    # Summarize the debate
+    summarizer = ag.Agent(
+        name="Summarizer",
+        system_prompt="You are a neutral observer. Summarize the debate by analyzing each delineated response and identifying the core arguments.",
+        client=client
+    )
+    delineated_transcript = "\n\n--- NEXT RESPONSE ---\n\n".join(final_transcript)
+    summary = summarizer.chat(f"Please briefly summarize the key points of the following debate responses:\n{delineated_transcript}")
+    print("\n--- Summary ---\n", summary)
     
     print("--- Debate Concluded ---")
 
