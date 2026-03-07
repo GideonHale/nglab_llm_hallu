@@ -1,28 +1,32 @@
-import agents.gpt as ag
+import agents.ollama_agent as ag
 from openai import OpenAI
 from roles import role_titles, roles
 from orderly_mad import orderly_mad
 
 def main(role):
     client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+    model = "qwen2.5:72b"
 
     # Define our debaters
     joseph = ag.Agent(
         name="Joseph",
         system_prompt=roles[role][0],
-        client=client
+        client=client,
+        model=model
     )
     
     steven = ag.Agent(
         name="Steven",
         system_prompt=roles[role][1],
-        client=client
+        client=client,
+        model=model
     )
 
     benjamin = ag.Agent(
         name="Benjamin",
         system_prompt=roles[role][2],
-        client=client
+        client=client,
+        model=model
     )
 
     print("--- Multi-Agent Debate System ---")
@@ -37,7 +41,8 @@ def main(role):
     summarizer = ag.Agent(
         name="Summarizer",
         system_prompt="You are a neutral observer. Summarize the debate by analyzing each delineated response and identifying the core arguments.",
-        client=client
+        client=client,
+        model=model
     )
     summary = summarizer.respond(final_transcript)
 

@@ -1,5 +1,5 @@
 from typing import List
-import agents.gpt as ag
+import agents.ollama_agent as ag
 import numpy as np
 
 def orderly_mad(topic: str,
