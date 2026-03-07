@@ -5,7 +5,9 @@ from orderly_mad import orderly_mad
 
 def main(role):
     client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-    model = "qwen2.5:72b"
+    # model = "qwen2.5:72b"
+    # model = "gpt-oss:120b"
+    model = "mistral-large:latest"
 
     # Define our debaters
     joseph = ag.Agent(
