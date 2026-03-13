@@ -1,4 +1,4 @@
-import agents as ag
+import agents.ollama_agent as ag
 import roles
 from openai import OpenAI
 
