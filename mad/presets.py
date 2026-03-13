@@ -1,5 +1,5 @@
-from . import agents as ag
-from . import roles
+import agents as ag
+import roles
 
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 model1 = "mistral-large:latest"
