@@ -1,5 +1,5 @@
 import agents.ollama_agent as ag
-import roles
+from roles import role_titles, roles
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
