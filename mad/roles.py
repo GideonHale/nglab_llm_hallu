@@ -1,4 +1,7 @@
-role_titles = ['parent', 'mathematician', 'public administrator']
+role_titles = ['parent',
+                'mathematician', 
+                'public administrator',
+                'journalist']
 roles = {
     "parent": [
         "You are a parent who advocates for progressive educational reforms and inclusive community policies.",
