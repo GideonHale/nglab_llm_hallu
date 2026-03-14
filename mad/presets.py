@@ -7,7 +7,7 @@ model1 = "mistral-large:latest"
 model2 = "gpt-oss:120b"
 model3 = "qwen2.5:72b"
 
-role = "parent"
+role = "journalist"
 
 joseph = ag.Agent(
     name="Joseph",

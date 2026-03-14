@@ -6,18 +6,14 @@ import presets as ap
 
 def main(role):
     # Define our debaters
-    agent1 = ap.joseph
-    agent2 = ap.steven
-    agent3 = ap.benjamin
-    agent4 = ap.christopher
-    agent5 = ap.elijah
+    agents = [ap.joseph, ap.steven, ap.benjamin, ap.christopher, ap.elijah]
 
     print("--- Multi-Agent Debate System ---")
     topic = input("Enter the debate topic: ")
     rounds = int(input("Enter number of turns: "))
 
     final_transcript = orderly_mad(topic,
-                [agent1, agent2, agent3, agent4, agent5],
+                agents,
                 rounds,
                 order="random")
 
@@ -33,7 +29,7 @@ if __name__ == "__main__":
     print('Role options: ', ', '.join(role_titles))
     while True:
         # role = input("Enter the role: ")
-        role = "parent"
+        role = "journalist"
         if role in role_titles:
             break
         print("Invalid role. Please try again.")
