@@ -13,7 +13,7 @@ joseph = ag.Agent(
     name="Joseph",
     system_prompt=roles[role][0],
     client=client,
-    model=model1
+    model=model3
 )
 
 steven = ag.Agent(
@@ -34,7 +34,7 @@ christopher = ag.Agent(
     name="Christopher",
     system_prompt=roles[role][3],
     client=client,
-    model=model1
+    model=model3
 )
 
 elijah = ag.Agent(
