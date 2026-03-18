@@ -28,8 +28,8 @@ def main(role):
 if __name__ == "__main__":
     print('Role options: ', ', '.join(role_titles))
     while True:
-        # role = input("Enter the role: ")
-        role = "journalist"
+        role = input("Enter the role: ")
+        # role = "journalist"
         if role in role_titles:
             break
         print("Invalid role. Please try again.")
