@@ -30,10 +30,11 @@ def main():
 
     print("--- Multi-Agent Debate System ---")
     news_file = input("Enter news file path: ")
+    news_file_path = f"mad/{news_file}"
     rounds = int(input("Enter number of turns: "))
 
     # Load and format the JSON as the debate topic
-    with open(news_file, "r") as f:
+    with open(news_file_path, "r") as f:
         data = json.load(f)
     post = data["post"]
     comments = data["comments"]
