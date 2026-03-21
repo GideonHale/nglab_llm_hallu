@@ -1,0 +1,149 @@
+{
+  "platform": "Reddit",
+  "subreddit": "r/worldnews",
+  "post": {
+    "id": "t3_xk9p2z",
+    "title": "BREAKING: WHO quietly admits COVID-19 vaccines permanently alter human DNA, internal memo leaked",
+    "author": "TruthSeeker_77",
+    "author_karma": 312,
+    "account_age_days": 47,
+    "posted_at": "2026-03-20T14:02:11Z",
+    "score": 4821,
+    "upvote_ratio": 0.71,
+    "num_comments": 634,
+    "flair": "Breaking News",
+    "url": "https://globalfreedomreport.net/who-covid-vaccine-dna-memo-leaked",
+    "domain": "globalfreedomreport.net",
+    "body": "A leaked internal memo from the World Health Organization, obtained exclusively by Global Freedom Report, reveals that WHO officials have been aware since early 2023 that mRNA COVID-19 vaccines cause permanent, heritable alterations to human genomic DNA. The memo, signed by a senior WHO immunologist identified only as 'Dr. H. Brennan,' states: 'Longitudinal studies confirm integration of spike-protein-encoding sequences into host germline cells at rates of 0.3–1.1% of vaccinated subjects.' The document was reportedly suppressed after lobbying by Pfizer and Moderna. Three unnamed whistleblowers corroborated the memo's authenticity. The WHO has not yet responded to requests for comment.",
+    "crosspost_count": 892,
+    "external_source_credibility": "unknown",
+    "awards": ["Wholesome", "Helpful"]
+  },
+  "comments": [
+    {
+      "id": "t1_c1a",
+      "author": "molecular_biologist_AMA",
+      "author_flair": "Verified: Molecular Biology PhD",
+      "score": 9203,
+      "posted_at": "2026-03-20T14:18:44Z",
+      "body": "This is completely false. mRNA vaccines work in the cytoplasm and are degraded within days. They do not enter the nucleus, which is where DNA is stored. Reverse transcription of mRNA into DNA and subsequent integration into the genome is a multi-step process requiring specific retroviral enzymes (reverse transcriptase, integrase) that mRNA vaccines simply do not provide. The biological mechanism described in this 'memo' is implausible on its face.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c1a_r1",
+          "author": "TruthSeeker_77",
+          "score": -214,
+          "posted_at": "2026-03-20T14:31:05Z",
+          "body": "The mainstream science says that, yes. But what about LINE-1 retrotransposons? A 2021 MIT study showed mRNA CAN be reverse-transcribed in liver cells. You're not telling the whole story.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c1a_r2",
+          "author": "molecular_biologist_AMA",
+          "score": 7811,
+          "posted_at": "2026-03-20T14:45:22Z",
+          "body": "You're misrepresenting that study. It was conducted in vitro on cancer cell lines that already overexpressed LINE-1 elements — a condition that does not apply to normal human tissue. The authors themselves stated the findings should NOT be extrapolated to in vivo vaccine effects. Additionally, even in that extreme artificial scenario, integration rates were vanishingly small and in somatic cells, not germline. The memo's claim of 'germline integration' is an extraordinary claim with zero supporting peer-reviewed evidence.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c2",
+      "author": "MediaLiteracyNerd",
+      "score": 6741,
+      "posted_at": "2026-03-20T14:22:09Z",
+      "body": "Let's talk about the source: 'globalfreedomreport.net'. According to NewsGuard and Media Bias/Fact Check, this site has a long history of publishing health misinformation and has been flagged for fabricating quotes from public officials at least four times since 2022. The site is registered anonymously via a Panamanian privacy proxy and has no listed editorial staff. There is no 'Dr. H. Brennan' in any WHO staff directory, published or archived.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c2_r1",
+          "author": "QuestionEverything_X",
+          "score": -88,
+          "posted_at": "2026-03-20T14:39:17Z",
+          "body": "Of course you trust NewsGuard, which is funded by Big Pharma adjacent investors. Wake up.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c2_r2",
+          "author": "MediaLiteracyNerd",
+          "score": 3102,
+          "posted_at": "2026-03-20T14:52:38Z",
+          "body": "NewsGuard's investor list is public. The 'Big Pharma' connection you're implying doesn't exist. More importantly, you could independently verify the WHO staff directory, the WHOIS record for globalfreedomreport.net, and the absence of this memo from any credible leak tracker like Distributed Denial of Secrets. None of these require trusting NewsGuard.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c3",
+      "author": "former_reuters_editor",
+      "author_flair": "Journalist, 18 years Reuters",
+      "score": 5489,
+      "posted_at": "2026-03-20T14:27:55Z",
+      "body": "Red flags from a journalism standpoint: (1) 'Obtained exclusively' by an outlet with no credibility history. (2) The memo is not reproduced or linked — only paraphrased. (3) Sources are unnamed 'whistleblowers' with zero corroborating trail. (4) 'WHO has not yet responded' is a classic move to create urgency before a denial can be issued and appended. (5) The framing — 'quietly admits' and 'suppressed after lobbying' — is classic manufactured outrage designed to pre-inoculate readers against refutation.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c4",
+      "author": "WHO_watcher_official",
+      "score": 4102,
+      "posted_at": "2026-03-20T15:01:44Z",
+      "body": "Update: The WHO press office has now responded on record. Quote: 'No such memo exists. The WHO has not conducted or received any study suggesting germline DNA integration from COVID-19 vaccines. This claim is false.' Full statement archived at who.int/press. The original post's claim that WHO 'has not yet responded' is now also factually incorrect.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c4_r1",
+          "author": "TruthSeeker_77",
+          "score": -401,
+          "posted_at": "2026-03-20T15:14:30Z",
+          "body": "Of course they'd deny it. That's what a cover-up looks like.",
+          "is_debunking": false,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c5",
+      "author": "statistician_skeptic",
+      "score": 3877,
+      "posted_at": "2026-03-20T15:09:12Z",
+      "body": "Even granting the completely fabricated premise for a moment: the memo claims '0.3–1.1% of vaccinated subjects' experience germline integration. Over 5 billion doses were administered globally. That would imply tens of millions of people with heritably altered DNA. We would be seeing measurable epidemiological signals across multiple countries, reproducible in independent labs, showing up in genome sequencing projects. We are not. The number is not just wrong — it is wrong in a way that would be immediately and trivially detectable if true.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c6",
+      "author": "CuriousLurker_88",
+      "score": 741,
+      "posted_at": "2026-03-20T15:22:00Z",
+      "body": "Genuine question: if this is so obviously fake, why does it have 4800+ upvotes? Doesn't that say something concerning about how misinformation spreads even on a platform with supposedly skeptical users?",
+      "is_debunking": false,
+      "replies": [
+        {
+          "id": "t1_c6_r1",
+          "author": "former_reuters_editor",
+          "score": 2341,
+          "posted_at": "2026-03-20T15:35:18Z",
+          "body": "Yes, it says exactly that. The post hit front page within 90 minutes of submission, at which point most upvoters are reacting to the headline alone. Studies on headline-only sharing show 60–70% of people who share or upvote news articles never read past the title. The debunking comments you're reading now will be seen by a fraction of the people who already upvoted and moved on.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "ground_truth_verdict": "FALSE",
+    "claim_categories": ["health misinformation", "vaccine misinformation", "fabricated document", "anonymous sourcing"],
+    "known_debunking_resources": [
+      "https://www.who.int/press",
+      "https://www.reuters.com/fact-check",
+      "https://www.snopes.com",
+      "https://mediabiasfactcheck.com/global-freedom-report"
+    ],
+    "notes": "Classic fabricated-leak format. Combines an unfalsifiable suppression narrative with scientific-sounding statistics to bypass critical evaluation. Intended for use as a MAD debate topic in the 'journalist' role configuration."
+  }
+}
