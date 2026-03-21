@@ -41,6 +41,10 @@ def main():
     formatted_comments = json.dumps(format_comments(comments))
 
     discussion = (
+        f"[DEBATE RULES]\n"
+        f"1. You are participating in a debate about the fakeness of the following news article.\n"
+        f"2. Give a verdict and then a brief, one-paragraph explanation the article is fake or not in response to previous responses too.\n"
+        
         f"[NEWS ARTICLE FOR DEBATE]\n"
         f"Headline: {post['title']}\n"
         f"Source domain: {post['domain']}\n"
