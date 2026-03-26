@@ -2,12 +2,12 @@ from typing import List
 import agents.ollama_agent as ag
 import numpy as np
 
-def orderly_mad(news_file: str,
+def orderly_mad(discussion: str,
                 agents: List[ag.Agent],
                 max_rounds: int,
                 order: str = "round") -> List[ag.Message]:
     # Initialize transcript with the news file
-    transcript = [ag.Message(role="user", content=f"News File: {news_file}", author="Moderator")]
+    transcript = [ag.Message(role="user", content=discussion, author="Moderator")]
     
     # Loops through agents for at most max_rounds times
     for i in range(max_rounds):
