@@ -29,8 +29,8 @@ def main():
     agents = [ap.joseph, ap.steven, ap.benjamin, ap.christopher, ap.elijah]
 
     print("--- Multi-Agent Debate System ---")
-    news_file = input("Enter news file path: ")
-    news_file_path = f"mad/{news_file}"
+    news_file = input("Enter news file name: ")
+    news_file_path = f"mad/news/{news_file}"
     rounds = int(input("Enter number of turns: "))
 
     # Load and format the JSON as the debate topic
