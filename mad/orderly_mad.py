@@ -17,6 +17,7 @@ def orderly_mad(discussion: str,
             current_agent = agents[i % num_agents]
         elif order == "random":
             ordering = np.random.shuffle(np.arange(num_agents))
+            print(ordering)
             current_agent = agents[ordering[i % num_agents]]
         
         # Print who is thinking
@@ -25,7 +26,7 @@ def orderly_mad(discussion: str,
         
         # Add response to transcript
         transcript.append(response)
-        
+
         # Immediate feedback in terminal
         print(f"[{current_agent.name}]: {response.content}\n")
         
