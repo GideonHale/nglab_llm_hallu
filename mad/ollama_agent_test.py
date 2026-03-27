@@ -57,7 +57,7 @@ def main():
         discussion,
         agents,
         num_turns,
-        order="random"
+        order="shuffle"
     )
 
     print("--- Debate Concluded ---")
