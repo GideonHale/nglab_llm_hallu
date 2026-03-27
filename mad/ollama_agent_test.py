@@ -31,7 +31,7 @@ def main():
     print("--- Multi-Agent Debate System ---")
     news_file = input("Enter news file name: ")
     news_file_path = f"mad/news/{news_file}"
-    rounds = int(input("Enter number of turns: "))
+    num_turns = int(input("Enter number of turns: "))
 
     # Load and format the JSON as the debate topic
     with open(news_file_path, "r") as f:
@@ -56,7 +56,7 @@ def main():
     final_transcript = orderly_mad(
         discussion,
         agents,
-        rounds,
+        num_turns,
         order="random"
     )
 
@@ -69,11 +69,4 @@ def main():
     
 
 if __name__ == "__main__":
-    # print('Role options: ', ', '.join(role_titles))
-    # while True:
-    #     role = input("Enter the role: ")
-    #     # role = "journalist"
-    #     if role in role_titles:
-    #         break
-    #     print("Invalid role. Please try again.")
     main()
