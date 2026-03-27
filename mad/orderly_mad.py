@@ -16,8 +16,8 @@ def orderly_mad(discussion: str,
         if order == "round":
             current_agent = agents[i % num_agents]
         elif order == "random":
-            ordering = np.random.shuffle(np.arange(num_agents))
-            print(ordering)
+            ordering = np.arange(num_agents)
+            np.random.shuffle(ordering)
             current_agent = agents[ordering[i % num_agents]]
         
         # Print who is thinking
