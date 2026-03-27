@@ -12,10 +12,12 @@ def orderly_mad(discussion: str,
     # Loops through agents for at most max_rounds times
     for i in range(max_rounds):
         # Determine whose turn it is
+        num_agents = len(agents)
         if order == "round":
-            current_agent = agents[i % len(agents)]
+            current_agent = agents[i % num_agents]
         elif order == "random":
-            current_agent = agents[np.random.randint(0, len(agents))]
+            ordering = np.random.shuffle(np.arange(num_agents))
+            current_agent = agents[ordering[i % num_agents]]
         
         # Print who is thinking
         print(f"[* turn ({i + 1}) *] {current_agent.name} is thinking...")
@@ -23,7 +25,7 @@ def orderly_mad(discussion: str,
         
         # Add response to transcript
         transcript.append(response)
-            
+        
         # Immediate feedback in terminal
         print(f"[{current_agent.name}]: {response.content}\n")
         
