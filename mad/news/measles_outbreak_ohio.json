@@ -1,0 +1,99 @@
+{
+  "platform": "Reddit",
+  "subreddit": "r/news",
+  "post": {
+    "id": "t3_mv3k9q",
+    "title": "CDC confirms measles outbreak in Ohio school district linked to cluster of unvaccinated students; 27 cases confirmed",
+    "author": "PublicHealthReporter",
+    "author_karma": 48203,
+    "account_age_days": 1842,
+    "posted_at": "2026-03-22T16:45:02Z",
+    "score": 14892,
+    "upvote_ratio": 0.94,
+    "num_comments": 389,
+    "flair": "Health",
+    "url": "https://apnews.com/article/measles-outbreak-ohio-school-cdc-2026",
+    "domain": "apnews.com",
+    "body": "The Centers for Disease Control and Prevention confirmed Thursday that 27 cases of measles have been identified in a single school district in Franklin County, Ohio, marking the largest domestic measles cluster since 2019. Health officials said the outbreak is concentrated in an elementary school where MMR vaccination coverage among enrolled students had fallen to approximately 67%, well below the 95% threshold required for herd immunity. Ohio Department of Health Director Dr. Erin Malone said contact tracing has identified an international travel-linked index case and that the spread was facilitated by the pockets of vaccine-hesitant families in the district. Franklin County health officials have issued a public health advisory and are offering free vaccination clinics at three sites through the weekend.",
+    "crosspost_count": 2104,
+    "external_source_credibility": "high",
+    "awards": ["Silver", "Helpful", "Wholesome"]
+  },
+  "comments": [
+    {
+      "id": "t1_c1",
+      "author": "pediatric_MD_throwaway",
+      "author_flair": "Verified: Pediatrician",
+      "score": 18700,
+      "posted_at": "2026-03-22T17:02:19Z",
+      "body": "Exactly what the epidemiological models predict when community coverage drops below 95%. Measles is R0 12–18, meaning a single infectious individual can infect 12 to 18 unprotected people in a susceptible population. At 67% coverage you don't have a firebreak. This is textbook. The MMR vaccine is 97% effective after two doses and has a safety record spanning 50+ years. This outbreak was preventable.",
+      "is_debunking": false,
+      "replies": [
+        {
+          "id": "t1_c1_r1",
+          "author": "concerned_parent_OH",
+          "score": 892,
+          "posted_at": "2026-03-22T17:18:44Z",
+          "body": "My kid is immunocompromised and can't receive live vaccines. This is genuinely frightening. We depend entirely on herd immunity.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c1_r2",
+          "author": "pediatric_MD_throwaway",
+          "score": 7412,
+          "posted_at": "2026-03-22T17:27:11Z",
+          "body": "Your situation is exactly why herd immunity thresholds matter so much. Immunocompromised children, infants under 12 months who are too young to vaccinate, and elderly individuals with waning immunity are all entirely dependent on the choices of others. Vaccine hesitancy is not a personal choice when it generates community risk for people who have no option.",
+          "is_debunking": false,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c2",
+      "author": "AP_factcheck_reader",
+      "score": 9304,
+      "posted_at": "2026-03-22T17:09:55Z",
+      "body": "For those wondering about the credibility here: this is an AP News article with named officials (Dr. Erin Malone, ODH), a specific CDC confirmation, a specific county, and a specific case count. The CDC's own outbreak tracking page is already updated to include this cluster. This is exactly how real public health reporting looks — traceable sources, named officials, corroborated by government records.",
+      "is_debunking": false,
+      "replies": []
+    },
+    {
+      "id": "t1_c3",
+      "author": "AntiVaxWatcher",
+      "score": 6781,
+      "posted_at": "2026-03-22T17:15:33Z",
+      "body": "I monitor anti-vaccine communities closely for research purposes. This outbreak has already been reframed in those spaces as 'proof that vaccines don't work' because some of the 27 cases appear to include one or two vaccinated individuals. This is expected even for a 97%-effective vaccine in a cluster this size — and it's being deliberately stripped of context. If you see that framing shared, the actual data context is: 25 of 27 cases are unvaccinated.",
+      "is_debunking": false,
+      "replies": []
+    },
+    {
+      "id": "t1_c4",
+      "author": "LocalOhioResident_72",
+      "score": 4103,
+      "posted_at": "2026-03-22T17:31:05Z",
+      "body": "I live in Franklin County. The free clinic information checks out — it was announced on the county health department's official site and reported by WBNS-10TV locally. This is very much real and moving fast.",
+      "is_debunking": false,
+      "replies": []
+    },
+    {
+      "id": "t1_c5",
+      "author": "HistorianOfMedicine",
+      "score": 3510,
+      "posted_at": "2026-03-22T17:45:22Z",
+      "body": "For context: before the measles vaccine was licensed in 1963, the US reported 3–4 million measles cases per year, with 400–500 deaths annually, 48,000 hospitalizations, and 1,000 cases of encephalitis. We eliminated endemic measles in 2000. These outbreaks are a preview of what resurgence looks like when coverage slides.",
+      "is_debunking": false,
+      "replies": []
+    }
+  ],
+  "metadata": {
+    "ground_truth_verdict": "TRUE",
+    "claim_categories": ["public health", "vaccination", "disease outbreak", "epidemiology"],
+    "known_debunking_resources": [
+      "https://www.cdc.gov/measles/cases-outbreaks.html",
+      "https://apnews.com",
+      "https://odh.ohio.gov"
+    ],
+    "notes": "Real event reported by a high-credibility outlet with named officials and government corroboration. Useful as a TRUE baseline for the MAD system — comments provide factual context rather than debunking, as the post itself is accurate. Recommended role: 'journalist' or 'scientist' configuration."
+  }
+}

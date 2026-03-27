@@ -1,0 +1,120 @@
+{
+  "platform": "Reddit",
+  "subreddit": "r/worldnews",
+  "post": {
+    "id": "t3_bq7m4r",
+    "title": "LEAKED: Internal EPA report proves 5G tower radiation is primary driver of bee colony collapse — Big Tech lobbied to bury it",
+    "author": "NatureTruth_Now",
+    "author_karma": 198,
+    "account_age_days": 31,
+    "posted_at": "2026-03-25T09:14:33Z",
+    "score": 6312,
+    "upvote_ratio": 0.68,
+    "num_comments": 812,
+    "flair": "Breaking News",
+    "url": "https://ecowatchtruth.org/epa-5g-bees-leaked-report-2026",
+    "domain": "ecowatchtruth.org",
+    "body": "A confidential 2025 EPA internal assessment, leaked to EcoWatch Truth by a former agency contractor, concludes that millimeter-wave 5G radiation from tower installations is responsible for 73% of documented bee colony collapse disorder (CCD) cases in North America since 2019. The report, titled 'Non-Ionizing EMF Effects on Apis mellifera Navigation and Hive Viability,' was allegedly suppressed following pressure from telecommunications industry lobbyists at the FCC. The document quotes lead researcher 'Dr. R. Hollis' stating: 'The navigational disruption observed in our field trials exceeds that of any pesticide exposure documented to date.' The EPA has not responded to requests for comment. Telecom shares fell 1.2% in after-hours trading following an early version of this story.",
+    "crosspost_count": 1243,
+    "external_source_credibility": "unknown",
+    "awards": ["Hugz", "Helpful"]
+  },
+  "comments": [
+    {
+      "id": "t1_c1",
+      "author": "entomologist_research",
+      "author_flair": "Verified: Entomology PhD, UMN",
+      "score": 11402,
+      "posted_at": "2026-03-25T09:31:07Z",
+      "body": "I study bee colony collapse professionally. This report does not exist — I have colleagues at the EPA's Office of Pesticide Programs and this has not circulated in any form. More importantly, the science is wrong. CCD's documented causes are well-established: Varroa mite infestations, neonicotinoid pesticides, habitat loss, and pathogen load. 5G millimeter-wave signals attenuate rapidly and cannot penetrate hive structures in any biologically meaningful way. The frequencies involved (24–100 GHz) have been studied extensively in the context of human and animal exposure, and no credible peer-reviewed literature supports navigational disruption in bees at real-world power levels.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c1_r1",
+          "author": "NatureTruth_Now",
+          "score": -302,
+          "posted_at": "2026-03-25T09:44:21Z",
+          "body": "Of course researchers 'at the EPA' would deny it. They're the ones who buried it. And a 2018 paper from the Indian Journal of Experimental Biology found EMF disrupts bee behavior — look it up.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c1_r2",
+          "author": "entomologist_research",
+          "score": 8904,
+          "posted_at": "2026-03-25T09:58:43Z",
+          "body": "I'm familiar with that study. It used extremely high power densities — orders of magnitude above anything emitted by a 5G tower at ground level — and it looked at behavioral cues in a highly artificial lab setting with no hive context. The authors themselves noted generalizability limits. Selectively citing a low-power study to support a claim about real-world 5G infrastructure is a misrepresentation of the science. Colony collapse began accelerating well before 5G deployment: the first major die-offs were documented in 2006–2007, when 5G didn't exist.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c2",
+      "author": "SourceCheckBot_human",
+      "score": 8741,
+      "posted_at": "2026-03-25T09:37:55Z",
+      "body": "Source check: 'ecowatchtruth.org' is NOT the same as ecwatch.org, which is a legitimate environmental journalism outlet. 'Ecowatchtruth' is a separate domain registered in March 2025, with no staff page, no editorial policy, and WHOIS privacy protection. It appears to have been set up specifically to mimic the credibility of the real EcoWatch brand. The EPA FOIA reading room has no document matching this title or the named researcher 'Dr. R. Hollis.' This appears to be a typosquat misinformation site.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c2_r1",
+          "author": "5GSkeptic_real",
+          "score": -145,
+          "posted_at": "2026-03-25T09:51:10Z",
+          "body": "Even if the source is shady, that doesn't mean the underlying info is wrong.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c2_r2",
+          "author": "SourceCheckBot_human",
+          "score": 4312,
+          "posted_at": "2026-03-25T10:04:28Z",
+          "body": "It doesn't automatically make it wrong, but it does shift the burden of proof entirely onto the claim. A 'leaked EPA report' that exists on exactly one anonymous website with a fake staff page, cannot be found in FOIA databases, and cites a researcher with no professional footprint anywhere is not a credible primary source. The default position should be skepticism, not credence.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c3",
+      "author": "FCC_spectrum_engineer",
+      "author_flair": "RF Engineer, 14 years",
+      "score": 6990,
+      "posted_at": "2026-03-25T09:44:02Z",
+      "body": "Speaking as someone who designs tower deployments: the claim that 5G radiation reaches bee hives in meaningful quantities is physically incoherent. mmWave 5G (the high-frequency band) has a range of a few hundred meters and is blocked by leaves, rain, and walls. Sub-6GHz 5G has similar power density to LTE, which has been deployed since 2010 with no observed effect on bee populations. If 5G were doing this, LTE would have done it first.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c4",
+      "author": "HistoryOfColonyCollapse",
+      "score": 5103,
+      "posted_at": "2026-03-25T09:52:17Z",
+      "body": "Timeline problem: The EPA's own CCD data shows the worst colony losses (30–40% of managed hives) occurred in 2012–2014. Commercial 5G rollout in the US didn't begin until 2019. If 5G is 'the primary driver,' what caused the pre-2019 losses? The actual evidence-based culprits — Varroa destructor mites and neonicotinoids — map cleanly onto the timeline. 5G does not.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c5",
+      "author": "BeekeeperOhio",
+      "score": 3841,
+      "posted_at": "2026-03-25T10:07:44Z",
+      "body": "Amateur beekeeper here, 12 hives, farm is within 400 meters of two 5G small cells. My colonies are fine. I treat for Varroa twice a year and avoid neonicotinoid-treated crops. My neighbor doesn't treat and lost four hives this winter. This is anecdotal, I know — but if 5G were causing 73% of CCD, I should be seeing something.",
+      "is_debunking": true,
+      "replies": []
+    }
+  ],
+  "metadata": {
+    "ground_truth_verdict": "FALSE",
+    "claim_categories": ["environmental misinformation", "fabricated document", "5G conspiracy", "typosquatting source"],
+    "known_debunking_resources": [
+      "https://www.epa.gov/pollinator-protection/colony-collapse-disorder",
+      "https://www.reuters.com/fact-check",
+      "https://apidologie.springeropen.com",
+      "https://mediabiasfactcheck.com"
+    ],
+    "notes": "Clear fabrication combining a typosquat source, a non-existent named researcher, and a timeline inconsistency (CCD predates 5G). Useful for examining how environmental anxieties are exploited in misinformation. Recommended role: 'scientist' or 'journalist' configuration."
+  }
+}

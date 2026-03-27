@@ -1,0 +1,129 @@
+{
+  "platform": "Reddit",
+  "subreddit": "r/science",
+  "post": {
+    "id": "t3_wn8p3c",
+    "title": "New study shows eating ultra-processed foods causes depression — scientists urge immediate dietary overhaul",
+    "author": "HealthScienceDaily",
+    "author_karma": 9401,
+    "account_age_days": 622,
+    "posted_at": "2026-03-24T11:30:45Z",
+    "score": 21340,
+    "upvote_ratio": 0.89,
+    "num_comments": 1102,
+    "flair": "Psychology",
+    "url": "https://healthsciencedaily.co/ultra-processed-food-depression-causes-2026",
+    "domain": "healthsciencedaily.co",
+    "body": "A major new peer-reviewed study published in JAMA Network Open analyzed dietary data from 287,000 adults across 29 countries and found that individuals who consume ultra-processed foods (UPF) daily are 44% more likely to experience clinical depression. The study, led by Dr. Camille Richart at University College London, controlled for age, income, exercise, and sleep. 'The data are unambiguous,' Richart told reporters. 'Ultra-processed food consumption is causing depression at a population level, and we are calling for warning labels and restrictions similar to tobacco.' The researchers recommend that individuals eliminate all UPF from their diet immediately. Health advocates are now pushing for a federal ban on marketing UPF to minors.",
+    "crosspost_count": 4891,
+    "external_source_credibility": "mixed",
+    "awards": ["Silver", "Helpful", "Wholesome", "Rocket Like"]
+  },
+  "comments": [
+    {
+      "id": "t1_c1",
+      "author": "epidemiologist_corrects",
+      "author_flair": "Verified: Epidemiologist",
+      "score": 22100,
+      "posted_at": "2026-03-24T11:51:04Z",
+      "body": "I read the actual paper. This article misrepresents it in one crucial way: the study is observational. The authors explicitly state they have not established causation — only a correlation after statistical adjustment. The word 'causes' appears nowhere in the paper's conclusions. Observational studies of this type cannot rule out reverse causation (depression may drive people toward UPF consumption) or residual confounding from variables the study couldn't measure, like social isolation or pre-existing anxiety disorders. The 44% figure is real, but 'causes depression' is a leap the researchers themselves did not make.",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c1_r1",
+          "author": "HealthScienceDaily",
+          "score": -201,
+          "posted_at": "2026-03-24T12:04:17Z",
+          "body": "The researchers said the data are 'unambiguous.' We quoted them directly.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c1_r2",
+          "author": "epidemiologist_corrects",
+          "score": 14800,
+          "posted_at": "2026-03-24T12:18:55Z",
+          "body": "Here's the full quote from the paper's discussion section: 'While the data are unambiguous in demonstrating a robust association, we urge caution in causal interpretation pending longitudinal intervention trials.' Your headline removed the second half of that sentence entirely. 'Association' and 'cause' are not interchangeable in science, and the difference matters enormously for public policy implications.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c2",
+      "author": "NutritionResearcher_RD",
+      "author_flair": "Registered Dietitian, MSc Nutrition Science",
+      "score": 15302,
+      "posted_at": "2026-03-24T11:58:33Z",
+      "body": "To give a balanced view: the underlying research is genuinely interesting and part of a growing body of literature. Multiple well-designed cohort studies have found similar associations between UPF intake and mental health outcomes, and there are plausible mechanistic hypotheses involving gut microbiome disruption, chronic inflammation, and nutrient displacement. The concern is real — but the science is not yet at 'immediate dietary overhaul' stage in terms of certainty. We're at 'strong signal worth investigating further,' not 'ban it like tobacco.'",
+      "is_debunking": true,
+      "replies": [
+        {
+          "id": "t1_c2_r1",
+          "author": "LaypersonSkeptic",
+          "score": 3412,
+          "posted_at": "2026-03-24T12:12:40Z",
+          "body": "So is eating UPF actually bad for you or not? I can't tell from this thread.",
+          "is_debunking": false,
+          "replies": []
+        },
+        {
+          "id": "t1_c2_r2",
+          "author": "NutritionResearcher_RD",
+          "score": 9801,
+          "posted_at": "2026-03-24T12:27:19Z",
+          "body": "Short version: there's solid evidence that diets high in UPF are associated with worse health outcomes across multiple domains — cardiovascular disease, obesity, possibly mental health. Reducing UPF consumption is a reasonable dietary goal supported by evidence. What the science does NOT currently support is the claim that UPF definitively *causes* depression in the direct way that, say, a virus causes an infection. The article's framing overstates certainty. The advice can be reasonable even when the headline is misleading.",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": "t1_c3",
+      "author": "StatsNerd_phd",
+      "score": 11920,
+      "posted_at": "2026-03-24T12:05:11Z",
+      "body": "The '44% more likely' framing is a relative risk figure, which sounds dramatic without the absolute risk context. If the baseline rate of clinical depression in the study population is ~8%, a 44% increase brings it to ~11.5%. That's a meaningful public health difference at scale — but it reads very differently than '44% more likely' implies to most readers, who tend to interpret relative risk as nearly half of all UPF eaters getting depressed.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c4",
+      "author": "SourceQualityCheck",
+      "score": 7403,
+      "posted_at": "2026-03-24T12:11:22Z",
+      "body": "Note on the source: 'healthsciencedaily.co' (note the .co not .com) is not affiliated with any academic institution or established science journalism outlet. This article links to the actual JAMA Network Open study, which is real — but the interpretation and quotes have been selectively edited. Always read the primary paper when a secondary site is reporting on research. In this case the paper is open-access and freely available.",
+      "is_debunking": true,
+      "replies": []
+    },
+    {
+      "id": "t1_c5",
+      "author": "ConfusedBioStudent",
+      "score": 2901,
+      "posted_at": "2026-03-24T12:28:50Z",
+      "body": "I came in ready to debunk this and then read the actual paper and now I'm... not sure? Like the study is real, the association is real, and the size is substantial. But the article's framing is definitely wrong. Is this misinformation even though the underlying fact it references is basically true?",
+      "is_debunking": false,
+      "replies": [
+        {
+          "id": "t1_c5_r1",
+          "author": "epidemiologist_corrects",
+          "score": 8741,
+          "posted_at": "2026-03-24T12:43:07Z",
+          "body": "Yes — and this is actually the most common and insidious form of scientific misinformation. The study is real. The correlation is real. What's false is the causal claim and the urgency framing. This technique — anchoring misinformation to a real finding and then overstating it — is harder to debunk than outright fabrication because fact-checkers have to say 'yes, but...' rather than simply 'no.' The accurate headline would be: 'Large study finds strong link between ultra-processed food and depression; researchers call for more investigation.'",
+          "is_debunking": true,
+          "replies": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "ground_truth_verdict": "AMBIGUOUS",
+    "claim_categories": ["science misrepresentation", "causation vs. correlation", "nutritional epidemiology", "misleading headline"],
+    "known_debunking_resources": [
+      "https://jamanetwork.com/journals/jamanetworkopen",
+      "https://www.healthnewsreview.org",
+      "https://www.reuters.com/fact-check"
+    ],
+    "notes": "The underlying study is real and published in a credible journal. The misinformation lies in the causal framing ('causes' vs. 'is associated with'), selective quotation stripping caveats, and relative-risk presentation without absolute context. Ideal for testing whether the MAD system can distinguish between 'the source event is real' and 'the claim made about it is not supported.' Most challenging article of the three for debunking because partial truth is embedded throughout. Recommended role: 'scientist' or 'ethicist' configuration."
+  }
+}
