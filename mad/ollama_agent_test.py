@@ -2,7 +2,7 @@ import agents.ollama_agent as ag
 from openai import OpenAI
 from roles import role_titles, roles
 from orderly_mad import orderly_mad
-import presets as ap
+import agents.agent_presets as ap
 import json
 import os
 
