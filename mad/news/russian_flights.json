@@ -1,0 +1,45 @@
+{
+  "post_id": "1hqrb3m",
+  "title": "Spike in Russian flights from Syria to Libyan desert base as Moscow eyes new Mediterranean hub",
+  "source_score": 0.5069471681299399,
+  "missing_source_rate": 0.9411764705882353,
+  "num_articles": 238,
+  "num_unrated": 224,
+  "top_related_articles": [
+    {
+      "title": "Zelenskyy Tours Gulf States for Drone Defense Deals Amid Escalating Regional Tensions",
+      "url": "https://www.ctvnews.ca/world/russia-ukraine-war/article/zelenskyy-visits-gulf-arab-states-to-talk-drone-defence-and-seek-strategic-ties/",
+      "source_name": "ctvnews.ca",
+      "reliability_score": 45.145833124999996,
+      "domain": ".ctvnews.ca"
+    },
+    {
+      "title": "Russia Sends Upgraded Drones to Iran Amid Ukraine War",
+      "url": "https://apnews.com/article/russia-iran-drones-shahed-war-israel-ukraine-840b4f885d99714bdb7813c0d56213cf",
+      "source_name": "apnews.com",
+      "reliability_score": 44.8071797020484,
+      "domain": ".apnews.com"
+    },
+    {
+      "title": "U.S. Executes 'Operation Midnight Hammer' Against Iranian Nuclear Sites",
+      "url": "https://apnews.com/article/iran-fordo-us-strike-trump-israel-nuclear-sites-320a85327f94ed7496f09564261f3148",
+      "source_name": "apnews.com",
+      "reliability_score": 44.8071797020484,
+      "domain": ".apnews.com"
+    },
+    {
+      "title": "Report: Iranian Attack Damages U.S. E-3 Sentry AWACS in Saudi Arabia",
+      "url": "https://www.dw.com/ru/iran-porazil-letausij-radar-ssa-v-saudovskoj-aravii/a-76586770",
+      "source_name": "Deutsche Welle",
+      "reliability_score": 44.01282102564103,
+      "domain": ".dw.com"
+    },
+    {
+      "title": "Chinese Airlines Expand European Routes Benefiting from Russian Airspace Access",
+      "url": "https://www.rfi.fr/tw/%E6%AD%90%E6%B4%B2/20260329-%E5%8F%97%E7%9B%8A%E4%BF%84%E9%A0%98%E7%A9%BA-%E4%B8%AD%E8%88%AA%E6%96%B0%E5%A2%9E%E9%A3%9B%E5%BE%80%E6%AD%90%E6%B4%B2%E7%9A%84%E8%88%AA%E7%8F%AD-%E8%88%AA%E7%B7%9A",
+      "source_name": "RFI",
+      "reliability_score": 43.222222666666674,
+      "domain": ".rfi.fr"
+    }
+  ]
+}

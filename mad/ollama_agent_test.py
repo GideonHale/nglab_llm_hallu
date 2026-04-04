@@ -29,28 +29,52 @@ def main():
     agents = [ap.joseph, ap.steven, ap.benjamin, ap.christopher, ap.elijah]
 
     print("--- Multi-Agent Debate System ---")
-    news_file = input("Enter news file name: ")
+
+    prompt = "Available files:\n"
+    # append all files names in mad/news/ to prompt with numerations
+    for i, file in enumerate(os.listdir("mad/news")):
+        prompt += f"{i + 1}. {file}\n"
+    prompt += "\nSelect file: "
+    news_file_number = input(prompt)
+    news_file = os.listdir("mad/news")[int(news_file_number) - 1]
+    print('File selected: ', news_file)
     news_file_path = f"mad/news/{news_file}"
-    num_turns = int(input("Enter number of turns: "))
+    prompt = "\nEnter number of turns: "
+    num_turns = int(input(prompt))
 
     # Load and format the JSON as the debate topic
     with open(news_file_path, "r") as f:
         data = json.load(f)
-    post = data["post"]
-    comments = data["comments"]
-    formatted_comments = json.dumps(format_comments(comments))
+    title = data["post_title"]
+    source_score = data["source_score"]
+    missing_source_rate = data["missing_source_rate"]
+    num_articles = data["num_articles"]
+    num_unrated = data["num_unrated"]
+
+    related_articles = data["top_related_articles"]
+    formatted_related_articles = json.dumps(related_articles)
 
     discussion = (
         f"[DEBATE RULES]\n"
         f"1. You are participating in a debate about the fakeness of the following news article.\n"
-        f"2. Give a clear verdict (fake or not) and then a brief, one-paragraph explanation of this and in response to any previous responses as well.\n"
+        f"2. Give a clear verdict (a numerical score between completely fake at 0 and completely reliable at 100) and then a brief, one-paragraph explanation of this and in response to any previous responses as well.\n"
+        
+        f"[DESCRIPTION OF DATA FIELDS]\n"
+        f"post_title: The title of the news article.\n"
+        f"source_score: The source score of the news article.\n"
+        f"missing_source_rate: The missing source rate of the news article.\n"
+        f"num_articles: The number of articles in the news article.\n"
+        f"num_unrated: The number of unrated articles in the news article.\n"
+        f"top_related_articles: The top related articles to the news article.\n"
+        f"reliability_score: The reliability score of the news article.\n"
         
         f"[NEWS ARTICLE FOR DEBATE]\n"
-        f"Headline: {post['title']}\n"
-        f"Source domain: {post['domain']}\n"
-        f"Body: {post['body']}\n"
-        f"[COMMENTS FOR DEBATE]\n"
-        f"{formatted_comments}\n"
+        f"Headline: {title}\n"
+        f"Source score: {source_score}\n"
+        f"Missing source rate: {missing_source_rate}\n"
+        f"Number of articles: {num_articles}\n"
+        f"Number of unrated articles: {num_unrated}\n"
+        f"Related articles: {formatted_related_articles}\n"
     )
 
     final_transcript = orderly_mad(
