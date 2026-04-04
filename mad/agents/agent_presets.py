@@ -50,3 +50,10 @@ summarizer = ag.Agent(
     client=client,
     model=model3
 )
+
+judge = ag.Agent(
+    name="Judge",
+    system_prompt="You are an unbiased judge. Give a verdict (a numerical score between completely fake at 0 and completely reliable at 100) based on the other agents' responses and that's it.",
+    client=client,
+    model=model3
+)

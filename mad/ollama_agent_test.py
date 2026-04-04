@@ -62,12 +62,12 @@ def main():
         
         f"[DESCRIPTION OF DATA FIELDS]\n"
         f"post_title: The title of the news article.\n"
-        f"source_score: The source score of the news article.\n"
-        f"missing_source_rate: The missing source rate of the news article.\n"
-        f"num_articles: The number of articles in the news article.\n"
-        f"num_unrated: The number of unrated articles in the news article.\n"
-        f"top_related_articles: The top related articles to the news article.\n"
-        f"reliability_score: The reliability score of the news article.\n"
+        f"source_score: The source score of the news article according to AskNews (I think).\n"
+        f"num_unrated: The number of related articles without a reliability score.\n"
+        f"num_articles: The number of total related articles.\n"
+        f"missing_source_rate: The ratio of unrated articles to total related articles.\n"
+        f"related_articles: Set of related articles.\n"
+        f"reliability_score: The reliability score of the news article according to AskNews (I think).\n"
         
         f"[NEWS ARTICLE FOR DEBATE]\n"
         f"Headline: {title}\n"
@@ -91,6 +91,11 @@ def main():
     summary = ap.summarizer.respond(final_transcript)
 
     print("\n--- Summary ---\n", summary.content)
+
+    # Judge the debate
+    verdict = ap.judge.respond(final_transcript)
+
+    print("\n--- Verdict ---\n", verdict.content)
     
 
 if __name__ == "__main__":
