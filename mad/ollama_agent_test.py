@@ -52,7 +52,7 @@ def main():
     num_articles = data["num_articles"]
     num_unrated = data["num_unrated"]
 
-    related_articles = data["top_related_articles"]
+    related_articles = data["related_articles"]
     formatted_related_articles = json.dumps(related_articles)
 
     discussion = (
