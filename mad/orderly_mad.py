@@ -30,6 +30,6 @@ def orderly_mad(discussion: str,
         transcript.append(response)
 
         # Immediate feedback in terminal
-        print(f"[{current_agent.name}]: {response.content}\n")
+        # print(f"[{current_agent.name}]: {response.content}\n")
         
     return transcript
