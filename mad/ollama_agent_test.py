@@ -99,6 +99,11 @@ def main():
     verdict = ap.judge.respond(final_transcript)
 
     print("\n--- Verdict ---\n", verdict.content)
+
+    # Extract the verdict
+    extracted_verdict = ap.extractor.respond(verdict.content)
+
+    print("\n--- Extracted Verdict ---\n", extracted_verdict.content)
     
 
 if __name__ == "__main__":

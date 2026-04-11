@@ -57,3 +57,10 @@ judge = ag.Agent(
     client=client,
     model=model3
 )
+
+extractor = ag.Agent(
+    name="Extractor",
+    system_prompt="You are an unbiased extractor. Find the score from 0 to 100 near the beginning and return only that.",
+    client=client,
+    model=model1
+)
