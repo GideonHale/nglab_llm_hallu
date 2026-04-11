@@ -60,7 +60,7 @@ judge = ag.Agent(
 
 extractor = ag.Agent(
     name="Extractor",
-    system_prompt="You are an unbiased extractor. Find the score from 0 to 100 near the beginning and return only that.",
+    system_prompt="You are an unbiased extractor. Find the score from 0 to 100 near the beginning and return only that. Return it in the format of '##/100', if it is not already in that format.",
     client=client,
     model=model1
 )
