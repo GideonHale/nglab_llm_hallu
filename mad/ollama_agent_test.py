@@ -51,6 +51,7 @@ def main():
     missing_source_rate = data["missing_source_rate"]
     num_articles = data["num_articles"]
     num_unrated = data["num_unrated"]
+    comment_score = 0.5 # TODO: get the actual score from Justice's comment scoring system
 
     related_articles = data["related_articles"]
     formatted_related_articles = json.dumps(related_articles)
@@ -62,16 +63,18 @@ def main():
         
         f"[DESCRIPTION OF DATA FIELDS]\n"
         f"post_title: The title of the news article.\n"
-        f"source_score: The source score of the news article according to AskNews (I think).\n"
-        f"num_unrated: The number of related articles without a reliability score.\n"
-        f"num_articles: The number of total related articles.\n"
-        f"missing_source_rate: The ratio of unrated articles to total related articles.\n"
+        f"source_score (between 0 and 1): the average of all sources of related articles found in the AskNews reliability dataset.\n"
+        f"missing_source_rate (between 0 and 1): the rate of sources returned from the RAG system that did not have a match in the reliability dataset.\n"
+        f"num_articles (from 0 to 30): the number of articles returned from the RAG system that had semantically similar titles to the source headline.\n"
+        f"num_unrated (from 0 to 30): the number of articles returned from the RAG system that were not found in the reliability dataset.\n"
         f"related_articles: Set of related articles.\n"
-        f"reliability_score: The reliability score of the news article according to AskNews (I think).\n"
+        f"reliability_score (from 0 to 64): the reliability of the source of the article according to AskNews.\n"
+        f"comment_score (between 0 and 1): the comment score from Justice's comment scoring system.\n" # TODO: make this an actual description
         
         f"[NEWS ARTICLE FOR DEBATE]\n"
         f"Headline: {title}\n"
         f"Source score: {source_score}\n"
+        f"Comment score: {comment_score}\n"
         f"Missing source rate: {missing_source_rate}\n"
         f"Number of articles: {num_articles}\n"
         f"Number of unrated articles: {num_unrated}\n"
