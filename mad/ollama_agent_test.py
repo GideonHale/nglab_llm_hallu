@@ -101,7 +101,7 @@ def main():
     print("\n--- Verdict ---\n", verdict.content)
 
     # Extract the verdict
-    extracted_verdict = ap.extractor.respond(verdict.content)
+    extracted_verdict = ap.extractor.respond([verdict])
 
     print("\n--- Extracted Verdict ---\n", extracted_verdict.content)
     
