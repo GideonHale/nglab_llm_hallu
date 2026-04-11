@@ -88,17 +88,19 @@ def main():
         order="shuffle"
     )
 
-    print("--- Debate Concluded ---")
+    print("\n--- Debate Concluded ---")
     
     # Summarize the debate
     summary = ap.summarizer.respond(final_transcript)
 
-    print("\n--- Summary ---\n", summary.content)
+    print("\n--- Summary ---")
+    # print(summary.content)
 
     # Judge the debate
-    verdict = ap.judge.respond(final_transcript)
+    verdict = ap.judge.respond(final_transcript + [summary])
 
-    print("\n--- Verdict ---\n", verdict.content)
+    print("\n--- Verdict ---")
+    # print(verdict.content)
 
     # Extract the verdict
     extracted_verdict = ap.extractor.respond([verdict])
