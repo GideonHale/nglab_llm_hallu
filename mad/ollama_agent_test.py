@@ -51,7 +51,7 @@ def main():
     missing_source_rate = data["missing_source_rate"]
     num_articles = data["num_articles"]
     num_unrated = data["num_unrated"]
-    comment_score = 0.5 # TODO: get the actual score from Justice's comment scoring system
+    gat_score = 0.5 # TODO: get the actual score from Justice's comment scoring system
 
     related_articles = data["related_articles"]
     formatted_related_articles = json.dumps(related_articles)
@@ -62,19 +62,19 @@ def main():
         f"2. Give a clear verdict (a numerical score between completely fake at 0 and completely reliable at 100) and then a brief, one-paragraph explanation of this and in response to any previous responses as well.\n"
         
         f"[DESCRIPTION OF DATA FIELDS]\n"
-        f"post_title: The title of the news article.\n"
-        f"source_score (between 0 and 1): the average of all sources of related articles found in the AskNews reliability dataset.\n"
-        f"missing_source_rate (between 0 and 1): the rate of sources returned from the RAG system that did not have a match in the reliability dataset.\n"
-        f"num_articles (from 0 to 30): the number of articles returned from the RAG system that had semantically similar titles to the source headline.\n"
-        f"num_unrated (from 0 to 30): the number of articles returned from the RAG system that were not found in the reliability dataset.\n"
-        f"related_articles: Set of related articles.\n"
-        f"reliability_score (from 0 to 64): the reliability of the source of the article according to AskNews.\n"
-        f"comment_score (between 0 and 1): the comment score from Justice's comment scoring system.\n" # TODO: make this an actual description
+        f"Headline: The title of the news article.\n"
+        f"Source score [from 0.0 to 1.0]: the average of all sources of related articles found in the Adfontes reliability dataset.\n"
+        f"Missing source rate [from 0.0 to 1.0]: the rate of sources returned from the RAG system that did not have a match in the reliability dataset.\n"
+        f"Number of articles [from 0 to 30]: the number of articles returned from the RAG system that had semantically similar titles to the source headline.\n"
+        f"Number of unrated articles [from 0 to 30]: the number of articles returned from the RAG system that were not found in the reliability dataset.\n"
+        f"GAT score [from 0.0 to 1.0]: a topological second opinion that signals whether community interaction patterns confirm or contradict the RAG's textual assessment.\n"
+        f"Related articles: Set of related articles.\n"
+        f"Reliability score [from 0 to 64]: the reliability of the source of the article according to AskNews.\n"
         
         f"[NEWS ARTICLE FOR DEBATE]\n"
         f"Headline: {title}\n"
         f"Source score: {source_score}\n"
-        f"Comment score: {comment_score}\n"
+        f"GAT score: {gat_score}\n"
         f"Missing source rate: {missing_source_rate}\n"
         f"Number of articles: {num_articles}\n"
         f"Number of unrated articles: {num_unrated}\n"
