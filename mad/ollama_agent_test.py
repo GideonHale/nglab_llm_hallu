@@ -89,7 +89,7 @@ def main():
 
         gat_score = get_gat_score('t3_' + iden)
     except Exception as e:
-        print('Error: ', e)
+        print('Error:', e)
         gat_score = 0.5
         print("Using default GAT score of 0.5")
 
@@ -166,16 +166,16 @@ def main():
             extracted_verdict.content = 0
             continue
         
-        print('Score: ', extracted_verdict.content)
+        print('Score:', extracted_verdict.content)
         verdicts.append(int(extracted_verdict.content))
     
-    print(verdicts)
+    print('Verdicts:', verdicts)
     # Average the scores
     if len(verdicts) == 0:
         final_score = 'N/A'
     else:
         final_score = sum(verdicts) / len(verdicts) / 5
-    print("Final Score: ", final_score)
+    print("Final Score:", final_score)
 
 if __name__ == "__main__":
     main()
