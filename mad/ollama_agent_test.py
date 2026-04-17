@@ -145,7 +145,7 @@ def main():
     n = 3
     verdicts = []
     for i in range(n):
-        print(f'\n--- Judge {i+1} / {n} thinking ---\n')
+        print(f'\n--- Judge {i+1} / {n} thinking ---')
 
         # Judge the debate
         verdict = ap.judge.respond(final_transcript)
@@ -169,6 +169,7 @@ def main():
         print('Score: ', extracted_verdict.content)
         verdicts.append(int(extracted_verdict.content))
     
+    print(verdicts)
     # Average the scores
     if len(verdicts) == 0:
         final_score = 'N/A'
