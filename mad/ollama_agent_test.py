@@ -43,7 +43,7 @@ def main():
     # take one post from matched_claims_llm_scores.jsonl
     print("Loading data from matched_claims_llm_scores.jsonl...")
     data = []
-    with open("matched_claims_llm_scores.jsonl", "r") as f:
+    with open("datasets/matched_claims_llm_scores.jsonl", "r") as f:
         for line in f:
             data.append(json.loads(line))
 
