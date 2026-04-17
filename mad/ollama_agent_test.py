@@ -56,7 +56,7 @@ def main():
         missing_source_rate = post["missing_source_rate"]
         num_articles = post["num_articles"]
         num_unrated = post["num_unrated"]
-        related_articles = data["related_articles"]
+        related_articles = post["related_articles"]
         formatted_related_articles = json.dumps(related_articles)
     else:
         print("No data found in matched_claims_llm_scores.jsonl")
