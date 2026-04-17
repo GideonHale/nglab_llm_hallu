@@ -5,25 +5,26 @@ from orderly_mad import orderly_mad
 import agents.agent_presets as ap
 import json
 import os
+import csv
 
-def format_comments(comments):
-    formatted_comments = []
-    for comment in comments:
-        comment_dict = {
-            "score": comment["score"],
-            "body": comment["body"],
-            "replies": []
-        }
-        for reply in comment["replies"]:
-            reply_dict = {
-                "score": reply["score"],
-                "body": reply["body"],
-                # "replies": reply["replies"]
-                # we're only gonna nest one level deep for now
-            }
-            comment_dict["replies"].append(reply_dict)
-        formatted_comments.append(comment_dict)
-    return formatted_comments
+# def format_comments(comments):
+#     formatted_comments = []
+#     for comment in comments:
+#         comment_dict = {
+#             "score": comment["score"],
+#             "body": comment["body"],
+#             "replies": []
+#         }
+#         for reply in comment["replies"]:
+#             reply_dict = {
+#                 "score": reply["score"],
+#                 "body": reply["body"],
+#                 # "replies": reply["replies"]
+#                 # we're only gonna nest one level deep for now
+#             }
+#             comment_dict["replies"].append(reply_dict)
+#         formatted_comments.append(comment_dict)
+#     return formatted_comments
 
 def get_gat_score(iden):
     with open(f"datasets/justice_final_results.csv", "r") as f:
