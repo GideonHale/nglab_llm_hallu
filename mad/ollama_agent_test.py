@@ -31,6 +31,7 @@ def get_gat_score(iden):
         reader = csv.reader(f)
         for row in reader:
             if row[0] == str(iden):
+                print("Found GAT score for post", iden, ":", row[1])
                 return float(row[1])
     # if it doesn't find the score, raise an exception
     raise(Exception(f"Could not find GAT score for post {iden}"))
@@ -99,7 +100,7 @@ def main():
     discussion = (
         f"[DEBATE RULES]\n"
         f"1. You are participating in a debate about the fakeness of the following news article.\n"
-        f"2. Give a clear verdict (a numerical score between completely fake at 0 and completely reliable at 100) and then a brief, one-paragraph explanation of this and in response to any previous responses as well.\n"
+        f"2. Give a clear verdict (a numerical integer score between completely fake at 0 and completely reliable at 5) and then a brief, one-paragraph explanation of this and in response to any previous responses as well.\n"
         
         f"[DESCRIPTION OF DATA FIELDS]\n"
         f"Headline: The title of the news article.\n"
