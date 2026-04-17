@@ -139,7 +139,7 @@ def main():
     final_transcript.append(summary)
 
     print("\n--- Summary ---")
-    print(summary.content)
+    # print(summary.content)
 
     print("\n--- Judging Debate ---")
     n = 3
@@ -151,7 +151,7 @@ def main():
         verdict = ap.judge.respond(final_transcript)
 
         print("\n--- Verdict ---")
-        print(verdict.content)
+        # print(verdict.content)
 
         # Extract the verdict just to like super make sure that we have an integer value
         extracted_verdict = ap.extractor.respond([verdict])
@@ -166,7 +166,7 @@ def main():
             extracted_verdict.content = 0
             continue
         
-        print('Score:', extracted_verdict.content)
+        # print('Score:', extracted_verdict.content)
         verdicts.append(int(extracted_verdict.content))
     
     print('Verdicts:', verdicts)
