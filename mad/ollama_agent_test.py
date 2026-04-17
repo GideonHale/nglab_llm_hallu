@@ -142,7 +142,7 @@ def main():
     # print(summary.content)
 
     print("\n--- Judging Debate ---")
-    n = 3
+    n = 10
     verdicts = []
     for i in range(n):
         print(f'\n--- Judge {i+1} / {n} thinking ---')
