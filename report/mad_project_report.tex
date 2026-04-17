@@ -27,33 +27,33 @@ The system takes in metadata about news articles and runs it through a structure
 ]
 
 % Nodes
-\node (json) [text width=4cm, align=center, font=\small\bfseries] {News Article Metadata (JSON)};
+\node (json) [text width=4cm, align=center, font=\small\bfseries] {News Article Metadata (\ref{sec:input_data})};
 
 \node (extractor) [box, below=0.8cm of json] {
-    \textbf{Input Features} (\texttt{ollama\_agent\_test.py}) \\
-    -- RAG score \\
-    -- GAT score \\
-    -- Related articles
+    \textbf{Input Features} (\ref{sec:pipeline}: \texttt{ollama\_agent\_test.py}) \\
+    -- RAG score (\ref{sec:input_data}) \\
+    -- GAT score (\ref{sec:input_data}) \\
+    -- Related articles (\ref{sec:input_data})
 };
 
 \node (mad) [box, below=1cm of extractor] {
-    \textbf{orderly\_mad()} (\texttt{orderly\_mad.py}) \\
-    Manages a structured multi-agent debate for \\
+    \textbf{orderly\_mad()} (\ref{sec:orderly_mad}) \\
+    Manages a structured multi-agent debate (\ref{sec:agent_pool}, \ref{sec:roles}) for \\
     N turns (specified upon request), either shuffled \\
     randomly or in a round
 };
 
 \node (post) [box, below=1cm of mad] {
-    \textbf{Post-Debate Pipeline} \\
-    1. Summarizer summarizes Message \\
-    2. Judge takes transcript+summary and gives verdict \\
-    3. Extractor extracts score ($\#\#/100$) from verdict text
+    \textbf{Post-Debate Pipeline} (\ref{sec:extraction}) \\
+    1. Summarizer summarizes Message (\ref{sec:agent_pool}) \\
+    2. Judge gives verdict on transcript (10 runs) (\ref{sec:agent_pool}) \\
+    3. Extractor parses score (0--5), averages to 0.0--1.0 (\ref{sec:agent_pool})
 };
 
 % Arrows
 \draw [arrow] (json) -- (extractor);
-\draw [arrow] (extractor) -- node[right, align=left, font=\footnotesize] {debate prompt} (mad);
-\draw [arrow] (mad) -- node[right, align=left, font=\footnotesize] {transcript \\ (List[Message])} (post);
+\draw [arrow] (extractor) -- node[right, align=left, font=\footnotesize] {debate prompt (\ref{sec:pipeline})} (mad);
+\draw [arrow] (mad) -- node[right, align=left, font=\footnotesize] {transcript \\ (List[Message] (\ref{sec:core_agent}))} (post);
 
 \end{tikzpicture}
 \caption{System Event Timeline and Flow\label{fig:flow}}
@@ -63,10 +63,12 @@ The workflow is summarized as follows:
 \begin{enumerate}
     \item \textbf{Input Feature Extraction}: An input metadata file of a news article (in JSON format) is parsed to extract retrieval-augmented generation (RAG) signals, graph attention network (GAT) scores, and related articles.
     \item \textbf{Multi-Agent Debate}: The \texttt{orderly\_mad()} engine runs an $N$-turn debate among randomized agents reacting to the prompt.
-    \item \textbf{Post-Debate Pipeline}: A \textit{Summarizer} synthesizes the debate transcript; a \textit{Judge} renders a verdict message based on the transcript and summary; and an \textit{Extractor} parses the verdict to produce a normalized score from 0 to 100.
+    \item \textbf{Post-Debate Pipeline}: A \textit{Summarizer} synthesizes the debate transcript; a \textit{Judge} and \textit{Extractor} are iteratively run ten times to render verdict messages (scored 0--5) and parse the numerical score. These 10 scores are averaged and normalized to a range of 0.0--1.0.
 \end{enumerate}
 
-\section{Input Data Summary}
+\section{Input Data Summary}\label{sec:input_data}
+
+\textcolor{red}{[Note: Insert reference here to the section detailing the input metadata structure once written]}
 
 A summary of all the major input fields that the system takes in and feeds to the MAD system are outlined in \textbf{Table \ref{tab:signals}}.
 
@@ -89,16 +91,16 @@ A summary of all the major input fields that the system takes in and feeds to th
     }
 \end{table}
 
-\section{System Components}
+\section{System Components}\label{sec:components}
 
-\subsection{Core Agent Abstraction (\texttt{ollama\_agent.py})}
+\subsection{Core Agent Abstraction (\texttt{ollama\_agent.py})}\label{sec:core_agent}
 This module defines the foundational data types and agent behavior:
 \begin{itemize}
     \item \textbf{\texttt{Message}}: A data class representing a single conversational turn with \texttt{role}, \texttt{content}, and \texttt{author}.
     \item \textbf{\texttt{Agent}}: A data class encapsulating a named persona with a system prompt, model identifier, temperature, and an OpenAI-compatible client. The \texttt{respond} method builds context and fetches the conversational LLM response.
 \end{itemize}
 
-\subsection{Instantiated Agent Pool (\texttt{agent\_presets.py})}
+\subsection{Instantiated Agent Pool (\texttt{agent\_presets.py})}\label{sec:agent_pool}
 Configures and exports all named agents used in experiments, sharing an Ollama-backed endpoint. The primary agents mapped to the \textit{Journalist} persona and utility tools are outlined in \textbf{Table \ref{tab:roles}}.
 
 \begin{table}[h]
@@ -116,12 +118,14 @@ Configures and exports all named agents used in experiments, sharing an Ollama-b
         Elijah & Journalist (misinfo specialist) & \texttt{gpt-oss:120b} \\
         Summarizer & Neutral observer & \texttt{qwen2.5:72b} \\
         Judge & Unbiased verdict-giver & \texttt{qwen2.5:72b} \\
-        Extractor & Score extractor ($\#\#/100$) & \texttt{mixtral:8x7b} \\
+        Extractor & Score extractor (0--5 format) & \texttt{mixtral:8x7b} \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-\subsection{Role Definitions (\texttt{roles.py})}
+It should be noted that the specific models assigned to these roles in \textbf{Table \ref{tab:roles}} are largely illustrative and somewhat arbitrary; the system architecture is model-agnostic and these debate and post-debate evaluation tasks could be executed just as effectively by any other capable, high-quality large language model.
+
+\subsection{Role Definitions (\texttt{roles.py})}\label{sec:roles}
 Provides a dictionary of system prompt templates keyed by specific domains such as journalist, mathematician, public administrator, and parent. Each role contains multiple persona variants providing ideological and methodological diversity within the debate. For the core evaluation of news articles, the system utilizes the "Journalist" domain, which defines five distinct personas. Each persona is assigned specific pedagogical instructions (task descriptions) that alter their approach to credibility assessment, as detailed in \textbf{Table \ref{tab:journalist_roles}}.
 
 \begin{table}[h]
@@ -140,38 +144,43 @@ Provides a dictionary of system prompt templates keyed by specific domains such 
         \bottomrule
     \end{tabular}
 \end{table}
-\subsection{Debate Strategy and Orchestration (\texttt{orderly\_mad.py})}
+\subsection{Debate Strategy and Orchestration (\texttt{orderly\_mad.py})}\label{sec:orderly_mad}
 The \texttt{orderly\_mad()} engine is responsible for the synchronous execution of the multi-agent debate. It takes a discussion prompt, a list of agents, a maximum round count, and an agent ordering strategy. 
 
 A critical vulnerability in multi-agent LLM systems is ``anchoring bias''—a phenomenon where the first agent to speak disproportionately influences the consensus trajectory of the ensuing debate. To mitigate this, \texttt{orderly\_mad()} implements dynamic strategies that allow for randomized permutation (`shuffle`) rather than strictly sequential execution (`round`). By shuffling the order of speakers per article, the system ensures that dissenting or highly critical personas (e.g., the Misinformation Specialist) have an equal probability of framing the initial argumentation. Over $N$ turns, this enforced adversarial structure prevents the formation of conversational echo chambers and forces the models to genuinely challenge conflicting viewpoints.
 
-\subsection{Main Entry Point \& Pipeline (\texttt{ollama\_agent\_test.py})}
+\subsection{Main Entry Point \& Pipeline (\texttt{ollama\_agent\_test.py})}\label{sec:pipeline}
 Orchestrates the full credibility-assessment pipeline:
 \begin{enumerate}
     \item Selects and loads an article metadata JSON file (from a selected pool in a subdirectory) by user request at the terminal.
     \item Extracts structured fields (RAG outputs, scores).
     \item Assembles a structured prompt describing debate rules, field descriptions, and article data.
     \item Executes the multi-agent debate.
-    \item Runs the post-debate summarization, judgment, and extraction workflow, concluding in a final reliability score out of 100.
+    \item Runs the post-debate summarization, judgment, and extraction workflow iteratively, concluding in a final averaged reliability score from 0.0--1.0.
 \end{enumerate}
 
-\subsection{Evaluation and Deterministic Verdict Extraction}
+\subsection{Evaluation and Deterministic Verdict Extraction}\label{sec:extraction}
 Following the conclusion of the $N$-turn debate, the chaotic and lengthy transcript poses a challenge for direct scoring. LLMs tasked with simultaneous reasoning and strict numerical output formatting frequently fail at one of the two constraints. To resolve this, the architecture employs a tiered, three-agent post-debate pipeline:
 
 \begin{enumerate}
     \item \textbf{Context Compression (Summarizer)}: A neutral observer agent processes the full debate transcript and generates a synthesized summary message. This prevents the downstream Judge from becoming distracted by conversational noise or overly dominating agents.
-    \item \textbf{Decision Rendering (Judge)}: The \textit{Judge} agent receives the appended state array (`transcript + summary`). Relieved of the burden of exact formatting, it is instructed purely to synthesize the arguments and produce a qualitative explanation ending in a quantitative assessment.
-    \item \textbf{Deterministic Parsing (Extractor)}: Finally, an \textit{Extractor} agent operates solely on the Judge's verdict. Using a highly constrained system prompt, its only objective is to parse the Judge's rationale and predictably isolate the numerical value into a standardized \texttt{\#\#/100} format. 
+    \item \textbf{Decision Rendering (Judge)}: The \textit{Judge} agent receives the appended state array (`transcript + summary`). Relieved of the burden of exact formatting, it is instructed purely to synthesize the arguments and produce a qualitative explanation ending in a quantitative assessment (from 0--5).
+    \item \textbf{Deterministic Parsing and Iteration (Extractor)}: Finally, an \textit{Extractor} agent operates solely on the Judge's verdict. Using a highly constrained system prompt, its only objective is to parse the Judge's rationale and predictably isolate the numerical value. To account for variance, the Judge and Extractor sequence is iterated ten times. The ten extracted scores (0--5) are then averaged and normalized to produce a robust final reliability score between 0.0 and 1.0.
 \end{enumerate}
 By conceptually separating reasoning (Judge) from formatting (Extractor), the system achieves a robust, deterministic programmatic output without sacrificing the nuanced ''Chain-of-Thought'' reasoning present in the debate.
 
-\section{Potential Future Work}
+\section{Architecture Justification}\label{sec:justification}
+The multi-agent design of this framework intentionally decouples the subjective, nuanced reasoning of human-like debates from the strict structural constraints required for programmatic evaluation. By assigning diverse ideological personas to the active debaters, the system simulates a realistic unstructured "marketplace of ideas" where unverified claims are rigorously stress-tested. 
+
+Furthermore, the post-debate pipeline introduces an elegant solution to two common computational limitations in conversational AI. First, LLMs empirically struggle with fine-grained numerical precision (such as judging accurately on a granular 0--100 scale), instead performing much more consistently and aligning closest to human intuition when working on a coarser 0--5 integer scale. Second, LLMs often fail to simultaneously perform deep reasoning while strictly adhering to rigorous output formatting. By restricting the Judge's primary evaluation to a 0--5 spectrum and employing a dual-agent mechanism—where the \textit{Judge} agent is granted complete freedom to construct unstructured ''Chain-of-Thought'' logic and the \textit{Extractor} agent simply parses the numerical intent—the architecture elegantly bypasses both issues. Iterating this final judgment phase ten times effectively smooths out the stochastic variance inherent to generative models, allowing the extracted evaluations to be reliably averaged and normalized into a robust, mathematically sound final score between 0.0 and 1.0.
+
+\section{Potential Future Work}\label{sec:future}
 While the current architecture automates a form of credibility assessments via multi-agent debate, there are several promising avenues for future research and system enhancement:
 
 \begin{itemize}
     \item \textbf{Real-Time Web Retrieval Tools}: Currently, the system relies on static metadata and pre-computed RAG features provided in the JSON input. Integrating live retrieval capabilities (e.g., web search APIs, direct database querying) would allow agents to actively fact-check emerging claims dynamically during the debate.
     \item \textbf{Hierarchical and Directed Debate Structures}: Exploring alternative orchestration strategies beyond flat shuffling or round-robin execution. Implementing structured hierarchical debate formats—where sub-agents debate specific claims and report back to a primary analytical agent—could improve the depth of the analysis.
-    \item \textbf{Human-in-the-Loop Evaluation Baseline}: Conducting empirical evaluation of the system's accuracy and ideological balance by comparing its extracted credibility scores (0--100) against expert annotations from professional human fact-checking organizations such as PolitiFact or Reuters.
+    \item \textbf{Human-in-the-Loop Evaluation Baseline}: Conducting empirical evaluation of the system's accuracy and ideological balance by comparing its extracted credibility scores (0.0--1.0) against expert annotations from professional human fact-checking organizations such as PolitiFact or Reuters.
     \item \textbf{Expanded Persona Topologies}: Broadening the scope of the instantiated agent pool (\texttt{agent\_presets.py}) to include highly specialized domains (e.g., medical experts for health-related news, or legal analysts for policy news) can provide more nuanced scrutiny, specifically targeting domain-level misinformation.
 \end{itemize}
 

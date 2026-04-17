@@ -26,7 +26,7 @@ def format_comments(comments):
     return formatted_comments
 
 def get_gat_score(iden):
-    with open(f"datasets/2025_final_predictions.csv", "r") as f:
+    with open(f"datasets/justice_final_results.csv", "r") as f:
         reader = csv.reader(f)
         for row in reader:
             if row[0] == str(iden):
@@ -60,7 +60,7 @@ def main():
         formatted_related_articles = json.dumps(related_articles)
     else:
         print("No data found in matched_claims_llm_scores.jsonl")
-        return
+        return 
 
     # prompt = "Available files:\n"
     # # append all files names in mad/news/ to prompt with numerations
@@ -82,7 +82,7 @@ def main():
     # num_articles = data["num_articles"]
     # num_unrated = data["num_unrated"]
 
-    print("Getting GAT score for post {iden}...")
+    print(f"Getting GAT score for post {iden}...")
     try:
         gat_score = get_gat_score(iden)
     except Exception as e:
