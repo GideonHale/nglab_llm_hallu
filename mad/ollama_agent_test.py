@@ -85,7 +85,8 @@ def main():
 
     print(f"Getting GAT score for post {iden}...")
     try:
-        gat_score = get_gat_score(iden)
+
+        gat_score = get_gat_score('t3_' + iden)
     except Exception as e:
         print('Error: ', e)
         gat_score = 0.5
