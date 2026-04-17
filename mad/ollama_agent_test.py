@@ -71,8 +71,6 @@ def main():
     # news_file = os.listdir("mad/news")[int(news_file_number) - 1]
     # print('File selected: ', news_file)
     # news_file_path = f"mad/news/{news_file}"
-    # prompt = "\nEnter number of turns: "
-    # num_turns = int(input(prompt))
 
     # # Load and format the JSON as the debate topic
     # with open(news_file_path, "r") as f:
@@ -121,6 +119,8 @@ def main():
         f"Related articles: {formatted_related_articles}\n"
     )
 
+    prompt = "\nEnter number of turns: "
+    num_turns = int(input(prompt))
     final_transcript = orderly_mad(
         discussion,
         agents,
