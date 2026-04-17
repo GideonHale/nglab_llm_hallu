@@ -53,14 +53,14 @@ summarizer = ag.Agent(
 
 judge = ag.Agent(
     name="Judge",
-    system_prompt="You are an unbiased judge. Give a verdict (a numerical score between completely fake at 0 and completely reliable at 100) based on the other agents' responses and that's it.",
+    system_prompt="You are an unbiased judge. Give a verdict (a numerical integer score between completely unreliable at 0 and completely reliable at 5) based on the other agents' responses and that's it.",
     client=client,
     model=model3
 )
 
 extractor = ag.Agent(
     name="Extractor",
-    system_prompt="You are an unbiased extractor. Find the score from 0 to 100 near the beginning and return only that. Return it in the format of '##/100', if it is not already in that format.",
+    system_prompt="You are an unbiased extractor. Find the score from 0 to 5 near the beginning and return only that. Return only the integer from 0 to 5.",
     client=client,
     model=model1
 )
