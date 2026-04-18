@@ -42,13 +42,14 @@ def main():
         return
 
     # create a csv file to store the results
-    if not os.path.exists(f"results/tests{half}.csv"):
-        print(f'Creating new results ({f"tests{half}.csv"}) file...')
-        with open(f"results/tests{half}.csv", "w") as f:
+    save_file = f"tests{half}.csv"
+    if not os.path.exists(f"results/{save_file}"):
+        print(f'Creating new results ({save_file}) file...')
+        with open(f"results/{save_file}", "w") as f:
             writer = csv.writer(f)
             writer.writerow(["post_id", "score_1", "score_2", "score_3", "score_4", "score_5"])
     else:
-        print(f'Results file ({f"tests{half}.csv"}) already exists...')
+        print(f'Results file ({save_file}) already exists...')
 
 
     # number of tests to run
@@ -68,31 +69,32 @@ def main():
     for post_idx in range(int((half - 1) * (n / 2)), int(half * n / 2)):
         print(f"\n--- Post {post_idx+1} / {int(half * n / 2)} ---")
         
+        # load all the data
+        post = data[post_idx]
+        iden = post["post_id"]
+        title = post["post_title"]
+        source_score = post["source_score"]
+        missing_source_rate = post["missing_source_rate"]
+        num_articles = post["num_articles"]
+        num_unrated = post["num_unrated"]
+        related_articles = post["related_articles"]
+        formatted_related_articles = json.dumps(related_articles)
+
+        # print(f"Getting GAT score for post {iden}...")
+        try:
+            gat_score = get_gat_score(str(iden))
+            print('GAT score successfully retrieved')
+        except Exception as e:
+            print('Error:', e)
+            gat_score = 0.5
+            print("Using default GAT score of 0.5")
+        
         # test five times
         tests = []
         for test_num in range(1, num_tests + 1):
             
-            # load all the data
-            post = data[post_idx]
-            iden = post["post_id"]
-            title = post["post_title"]
-            source_score = post["source_score"]
-            missing_source_rate = post["missing_source_rate"]
-            num_articles = post["num_articles"]
-            num_unrated = post["num_unrated"]
-            related_articles = post["related_articles"]
-            formatted_related_articles = json.dumps(related_articles)
-
-            print(f"Getting GAT score for post {iden}...")
-            try:
-                gat_score = get_gat_score(str(iden))
-                print('GAT score successfully retrieved')
-            except Exception as e:
-                print('Error:', e)
-                gat_score = 0.5
-                print("Using default GAT score of 0.5")
-
-            print("--- Comencing Debate ---")
+            # run the debate
+            print("\n--- Comencing Debate ---")
             discussion = (
                 f"[DEBATE RULES]\n"
                 f"1. You are participating in a debate about the fakeness of the following news article.\n"
@@ -152,34 +154,37 @@ def main():
                 # test to see whether it's an integer from 0 to 5
                 if not extracted_verdict.isdigit():
                     print('Error: the extracted score', extracted_verdict, 'is not an integer')
-                    extracted_verdict = 0
                     continue
                 elif not (0 <= int(extracted_verdict) <= 5):
-                    print('Error: the extracted score', extracted_verdict.content, 'is not between 0 and 5')
-                    extracted_verdict.content = 0
+                    print('Error: the extracted score', extracted_verdict, 'is not between 0 and 5')
                     continue
                 
-                # print('Score:', extracted_verdict.content)
-                verdicts.append(int(extracted_verdict.content))
+                # print('Score:', extracted_verdict)
+                verdicts.append(int(extracted_verdict))
             
             print('Verdicts:', verdicts)
             # Average the scores
             if len(verdicts) == 0:
-                final_score = 'NaN'
+                final_score = np.nan
             else:
+                print(f'Successful extraction of {len(verdicts)} verdicts')
                 final_score = sum(verdicts) / len(verdicts) / 5 # the 5 means it's a scale from 0 to 5
             print("Final Score:", final_score)
             tests.append(final_score)
 
         print(f"Test results for post {iden}: {tests}")
         # save the results
-        save_file = f'tests{half}.csv'
-        with open(f"results/{save_file}", "a") as f:
-            writer = csv.writer(f)
-            row = [iden]
-            for test in tests:
-                row.append(test)
-            writer.writerow(row)
+        try:
+            with open(f"results/{save_file}", "a") as f:
+                writer = csv.writer(f)
+                row = [iden]
+                for test in tests:
+                    row.append(test)
+                writer.writerow(row)
+            print(f'Results saved to {save_file}')
+        except Exception as e:
+            print('Error:', e)
+            print("Could not save results to file")
         
         print("We're stopping here for now")
         return # for debugging purposes
