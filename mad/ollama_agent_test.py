@@ -48,6 +48,10 @@ def main():
             writer = csv.writer(f)
             writer.writerow(["post_id", "score_1", "score_2", "score_3", "score_4", "score_5"])
 
+    # ask for number of turns to be used throughout
+    prompt = "\nEnter number of turns: "
+    num_turns = int(input(prompt))
+
     # take the given half of the data and run the experiment five times on each entry
     print(int((half - 1) * (n / 2)), int(half * n / 2))
     for post_idx in range(int((half - 1) * (n / 2)), int(half * n / 2)):
@@ -102,8 +106,6 @@ def main():
                 f"Related articles: {formatted_related_articles}\n"
             )
 
-            prompt = "\nEnter number of turns: "
-            num_turns = int(input(prompt))
             final_transcript = orderly_mad(
                 discussion,
                 agents,
