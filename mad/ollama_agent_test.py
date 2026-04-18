@@ -41,7 +41,9 @@ def main():
         print(f"No data found in {file_name}")
         return
 
+
     # create a csv file to store the results
+    tested_post_ids = [] # for storing all the post_ids that have already been tested
     save_file = f"test_result{half}.csv"
     if not os.path.exists(f"results/{save_file}"):
         print(f'Creating new results ({save_file}) file...')
@@ -50,6 +52,13 @@ def main():
             writer.writerow(["post_id", "score_1", "score_2", "score_3", "score_4", "score_5"])
     else:
         print(f'Results file ({save_file}) already exists...')
+    
+        # gather all the post_ids that have already been tested
+        with open(f"results/{save_file}", "r") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                tested_post_ids.append(row[0])
+        print(tested_post_ids)
 
 
     # number of tests to run
@@ -72,6 +81,10 @@ def main():
         # load all the data
         post = data[post_idx]
         iden = post["post_id"]
+        if iden in tested_post_ids:
+            print(f"Post {iden} has already been tested. Skipping...")
+            continue
+
         title = post["post_title"]
         source_score = post["source_score"]
         missing_source_rate = post["missing_source_rate"]
