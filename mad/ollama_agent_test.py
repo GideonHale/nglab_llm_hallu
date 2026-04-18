@@ -131,7 +131,7 @@ def main():
                 # Judge the debate
                 verdict = ap.judge.respond(final_transcript)
 
-                print("\n--- Verdict ---")
+                # print("\n--- Verdict ---")
                 # print(verdict.content)
 
                 # Extract the verdict just to like super make sure that we have an integer value
