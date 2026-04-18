@@ -27,10 +27,10 @@ def main():
     print("--- Multi-Agent Debate System ---")
     half = 0
     while half != 1 and half != 2:
-        half = int(input('Half (1 or 2): '))
+        half = int(input('\nHalf (1 or 2): '))
 
     # take one post from matched_claims_llm_scores.jsonl
-    print("Loading data from matched_claims_llm_scores.jsonl...")
+    print("\nLoading data from matched_claims_llm_scores.jsonl...")
     data = []
     file_name = 'matched_claims_llm_scores.jsonl'
     with open(f"datasets/{file_name}", "r") as f:
@@ -42,7 +42,7 @@ def main():
         return
 
     # create a csv file to store the results
-    save_file = f"test_vals{half}.csv"
+    save_file = f"test_result{half}.csv"
     if not os.path.exists(f"results/{save_file}"):
         print(f'Creating new results ({save_file}) file...')
         with open(f"results/{save_file}", "w") as f:
@@ -52,8 +52,8 @@ def main():
         print(f'Results file ({save_file}) already exists...')
 
 
-    # number of test_vals to run
-    prompt = "\nEnter number of test_vals to run: "
+    # number of tests to run
+    prompt = "\nEnter number of tests to run: "
     num_tests = int(input(prompt))
 
     # number of turns for debate
@@ -90,13 +90,13 @@ def main():
             print("Using default GAT score of 0.5")
         
         # test five times
-        test_vals = []
+        test_results = []
         for test_num in range(1, num_tests + 1):
 
             print(f"\n--- Test {test_num} / {num_tests} ---")
             
             # run the debate
-            print("--- Comencing Debate ---")
+            print("--- Commencing Debate ---")
             discussion = (
                 f"[DEBATE RULES]\n"
                 f"1. You are participating in a debate about the fakeness of the following news article.\n"
@@ -172,15 +172,15 @@ def main():
                 print(f'Successful extraction of {len(verdicts)} verdicts')
                 final_score = sum(verdicts) / len(verdicts) / 5 # the 5 means it's a scale from 0 to 5
             print("Final Score:", final_score)
-            test_vals.append(final_score)
+            test_results.append(final_score)
 
         # save the results
-        print(f"Test results for post {iden}: {test_vals}")
+        print(f"Test results for post {iden}: {test_results}")
         try:
             with open(f"results/{save_file}", "a") as f:
                 writer = csv.writer(f)
                 row = [iden]
-                for test_val in test_vals:
+                for test_val in test_results:
                     row.append(test_val)
                 writer.writerow(row)
             print(f'Results saved to {save_file}')
