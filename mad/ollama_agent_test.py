@@ -17,7 +17,7 @@ def get_gat_score(iden):
         for row in reader:
             print('row[0]:', row[0], 'iden:', iden, 'str("t3_" + iden):', str('t3_' + iden))
             if str(row[0]) == str('t3_' + iden):
-                print('gat_confidence_score:', float(row[1]))
+                print('gat_confidence_score:', float(row[2]))
                 return float(row[2])
     # if it doesn't find the score, raise an exception
     raise(Exception(f"Could not find GAT score for post {iden}"))
@@ -79,7 +79,8 @@ def main():
             except Exception as e:
                 print('Error:', e)
                 gat_score = 0.5
-            print("Using default GAT score of 0.5")
+                print("Using default GAT score of 0.5")
+            print('gat_score:', gat_score)
 
             print("\n--- Comencing Debate ---")
             discussion = (
