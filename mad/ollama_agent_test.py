@@ -86,13 +86,13 @@ def main():
             print(f"Getting GAT score for post {iden}...")
             try:
                 gat_score = get_gat_score(str(iden))
+                print('GAT score successfully retrieved')
             except Exception as e:
                 print('Error:', e)
                 gat_score = 0.5
                 print("Using default GAT score of 0.5")
-            print('gat_score:', gat_score)
 
-            print("\n--- Comencing Debate ---")
+            print("--- Comencing Debate ---")
             discussion = (
                 f"[DEBATE RULES]\n"
                 f"1. You are participating in a debate about the fakeness of the following news article.\n"
@@ -125,20 +125,20 @@ def main():
                 order="shuffle"
             )
 
-            print("\n--- Debate Concluded ---")
+            print("--- Debate Concluded ---")
             
             # Summarize the debate
-            print("\n--- Summarizing Debate ---")
+            print("--- Summarizing Debate ---")
             summary = ap.summarizer.respond(final_transcript)
             final_transcript.append(summary)
 
-            print("\n--- Summary ---")
+            # print("--- Summary ---")
             # print(summary.content)
 
-            print("\n--- Judging Debate ---")
+            print("--- Judging Debate ---")
             verdicts = []
             for post_idx in range(num_judge):
-                print(f'\n--- Judge {post_idx+1} / {num_judge} thinking ---')
+                print(f'[Judge {post_idx+1} / {num_judge}] thinking...')
 
                 # Judge the debate
                 verdict = ap.judge.respond(final_transcript)
@@ -147,14 +147,14 @@ def main():
                 # print(verdict.content)
 
                 # Extract the verdict just to like super make sure that we have an integer value
-                extracted_verdict = ap.extractor.respond([verdict])
+                extracted_verdict = ap.extractor.respond([verdict]).content[0]
 
                 # test to see whether it's an integer from 0 to 5
-                if not extracted_verdict.content.isdigit():
-                    print('Error: the extracted score', extracted_verdict.content, 'is not an integer')
-                    extracted_verdict.content = 0
+                if not extracted_verdict.isdigit():
+                    print('Error: the extracted score', extracted_verdict, 'is not an integer')
+                    extracted_verdict = 0
                     continue
-                elif not (0 <= int(extracted_verdict.content) <= 5):
+                elif not (0 <= int(extracted_verdict) <= 5):
                     print('Error: the extracted score', extracted_verdict.content, 'is not between 0 and 5')
                     extracted_verdict.content = 0
                     continue
@@ -165,7 +165,7 @@ def main():
             print('Verdicts:', verdicts)
             # Average the scores
             if len(verdicts) == 0:
-                final_score = 'N/A'
+                final_score = 'NaN'
             else:
                 final_score = sum(verdicts) / len(verdicts) / 5 # the 5 means it's a scale from 0 to 5
             print("Final Score:", final_score)
