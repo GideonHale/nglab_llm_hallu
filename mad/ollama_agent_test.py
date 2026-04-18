@@ -15,9 +15,8 @@ def get_gat_score(iden):
     with open(f"datasets/justice_final_results.csv", "r") as f:
         reader = csv.reader(f)
         for row in reader:
-            print(row[0])
-            print(str('t3_' + iden))
-            if row[0] == str('t3_' + iden):
+            print('row[0] type', type(row[0]), 'iden', iden, 'str("t3_" + iden)', str('t3_' + iden))
+            if str(row[0]) == str('t3_' + iden):
                 return float(row[2])
     # if it doesn't find the score, raise an exception
     raise(Exception(f"Could not find GAT score for post {iden}"))
