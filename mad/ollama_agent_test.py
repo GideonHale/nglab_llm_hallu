@@ -42,7 +42,7 @@ def main():
         return
 
     # create a csv file to store the results
-    save_file = f"tests{half}.csv"
+    save_file = f"test_vals{half}.csv"
     if not os.path.exists(f"results/{save_file}"):
         print(f'Creating new results ({save_file}) file...')
         with open(f"results/{save_file}", "w") as f:
@@ -52,16 +52,16 @@ def main():
         print(f'Results file ({save_file}) already exists...')
 
 
-    # number of tests to run
-    prompt = "\nEnter number of tests to run: "
+    # number of test_vals to run
+    prompt = "\nEnter number of test_vals to run: "
     num_tests = int(input(prompt))
 
     # number of turns for debate
-    prompt = "\nEnter number of turns for debate: "
+    prompt = "Enter number of turns for debate: "
     num_turns = int(input(prompt))
 
     # number of judging rounds
-    prompt = '\nEnter number of rounds of judging: '
+    prompt = 'Enter number of rounds of judging: '
     num_judge = int(input(prompt))
 
     # take the given half of the data and run the experiment five times on each entry
@@ -90,11 +90,13 @@ def main():
             print("Using default GAT score of 0.5")
         
         # test five times
-        tests = []
+        test_vals = []
         for test_num in range(1, num_tests + 1):
+
+            print(f"\n--- Test {test_num} / {num_tests} ---")
             
             # run the debate
-            print("\n--- Comencing Debate ---")
+            print("--- Comencing Debate ---")
             discussion = (
                 f"[DEBATE RULES]\n"
                 f"1. You are participating in a debate about the fakeness of the following news article.\n"
@@ -170,24 +172,24 @@ def main():
                 print(f'Successful extraction of {len(verdicts)} verdicts')
                 final_score = sum(verdicts) / len(verdicts) / 5 # the 5 means it's a scale from 0 to 5
             print("Final Score:", final_score)
-            tests.append(final_score)
+            test_vals.append(final_score)
 
-        print(f"Test results for post {iden}: {tests}")
         # save the results
+        print(f"Test results for post {iden}: {test_vals}")
         try:
             with open(f"results/{save_file}", "a") as f:
                 writer = csv.writer(f)
                 row = [iden]
-                for test in tests:
-                    row.append(test)
+                for test_val in test_vals:
+                    row.append(test_val)
                 writer.writerow(row)
             print(f'Results saved to {save_file}')
         except Exception as e:
             print('Error:', e)
             print("Could not save results to file")
         
-        print("We're stopping here for now")
-        return # for debugging purposes
+        # print("We're stopping here for now")
+        # return # for debugging purposes
 
 if __name__ == "__main__":
     main()
