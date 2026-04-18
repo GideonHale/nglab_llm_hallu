@@ -15,9 +15,7 @@ def get_gat_score(iden):
     with open(f"datasets/justice_final_results.csv", "r") as f:
         reader = csv.reader(f)
         for row in reader:
-            print('row[0]:', row[0], 'iden:', iden, 'str("t3_" + iden):', str('t3_' + iden))
             if str(row[0]) == str('t3_' + iden):
-                print('gat_confidence_score:', float(row[2]))
                 return float(row[2])
     # if it doesn't find the score, raise an exception
     raise(Exception(f"Could not find GAT score for post {iden}"))
@@ -45,13 +43,25 @@ def main():
 
     # create a csv file to store the results
     if not os.path.exists(f"results/tests{half}.csv"):
+        print(f'Creating new results ({f"tests{half}.csv"}) file...')
         with open(f"results/tests{half}.csv", "w") as f:
             writer = csv.writer(f)
             writer.writerow(["post_id", "score_1", "score_2", "score_3", "score_4", "score_5"])
+    else:
+        print(f'Results file ({f"tests{half}.csv"}) already exists...')
 
-    # ask for number of turns to be used throughout
-    prompt = "\nEnter number of turns: "
+
+    # number of tests to run
+    prompt = "\nEnter number of tests to run: "
+    num_tests = int(input(prompt))
+
+    # number of turns for debate
+    prompt = "\nEnter number of turns for debate: "
     num_turns = int(input(prompt))
+
+    # number of judging rounds
+    prompt = '\nEnter number of rounds of judging: '
+    num_judge = int(input(prompt))
 
     # take the given half of the data and run the experiment five times on each entry
     print(int((half - 1) * (n / 2)), int(half * n / 2))
@@ -60,7 +70,7 @@ def main():
         
         # test five times
         tests = []
-        for test_num in range(1, 6):
+        for test_num in range(1, num_tests + 1):
             
             # load all the data
             post = data[post_idx]
@@ -126,10 +136,9 @@ def main():
             # print(summary.content)
 
             print("\n--- Judging Debate ---")
-            n = 10
             verdicts = []
-            for post_idx in range(n):
-                print(f'\n--- Judge {post_idx+1} / {n} thinking ---')
+            for post_idx in range(num_judge):
+                print(f'\n--- Judge {post_idx+1} / {num_judge} thinking ---')
 
                 # Judge the debate
                 verdict = ap.judge.respond(final_transcript)
@@ -158,7 +167,7 @@ def main():
             if len(verdicts) == 0:
                 final_score = 'N/A'
             else:
-                final_score = sum(verdicts) / len(verdicts) / 5
+                final_score = sum(verdicts) / len(verdicts) / 5 # the 5 means it's a scale from 0 to 5
             print("Final Score:", final_score)
             tests.append(final_score)
 
@@ -167,8 +176,12 @@ def main():
         save_file = f'tests{half}.csv'
         with open(f"results/{save_file}", "a") as f:
             writer = csv.writer(f)
-            writer.writerow([iden, tests[0], tests[1], tests[2], tests[3], tests[4]])
+            row = [iden]
+            for test in tests:
+                row.append(test)
+            writer.writerow(row)
         
+        print("We're stopping here for now")
         return # for debugging purposes
 
 if __name__ == "__main__":
