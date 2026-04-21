@@ -58,7 +58,6 @@ def main():
             reader = csv.reader(f)
             for row in reader:
                 tested_post_ids.append(row[0])
-        print(tested_post_ids)
 
 
     # number of tests to run
